@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <settings>' +
+                    '        <animation enabled="True"/>' +
+                    '    </settings>' +
+                    '    <charts>' +
+                    '        <chart plot_type="CategorizedHorizontal">' +
+                    '            <chart_settings>' +
+                    '                <title>' +
+                    '                    <text>Single-Series: Range-Bar Chart</text>' +
+                    '                    <background enabled="false"/>' +
+                    '                </title>' +
+                    '                <axes>' +
+                    '                    <y_axis position="Right"/>' +
+                    '                </axes>' +
+                    '            </chart_settings>' +
+                    '            <data_plot_settings default_series_type="RangeBar">' +
+                    '                <range_bar_series style="AquaLight">' +
+                    '                    <bar_style>' +
+                    '                        <fill opacity="1"/>' +
+                    '                        <states>' +
+                    '                            <hover color="White">' +
+                    '                            </hover>' +
+                    '                            <pushed color="Rgb(200,200,200)">' +
+                    '                            </pushed>' +
+                    '                            <selected_normal>' +
+                    '                                <fill color="Blend(%Color,Black,0.1)"/>' +
+                    '                            </selected_normal>' +
+                    '                            <selected_hover>' +
+                    '                                <fill color="Blend(DarkColor(%Color),White,0.2)"/>' +
+                    '                            </selected_hover>' +
+                    '                        </states>' +
+                    '                    </bar_style>' +
+                    '                    <start_point>' +
+                    '                        <tooltip_settings enabled="True"/>' +
+                    '                    </start_point>' +
+                    '                    <end_point>' +
+                    '                        <tooltip_settings enabled="True"/>' +
+                    '                    </end_point>' +
+                    '                </range_bar_series>' +
+                    '            </data_plot_settings>' +
+                    '            <data>' +
+                    '                <series name="Series 1">' +
+                    '                    <point start="12" end="122"/>' +
+                    '                    <point start="24" end="152"/>' +
+                    '                    <point start="36" end="139"/>' +
+                    '                    <point start="42" end="142"/>' +
+                    '                    <point start="58" end="112"/>' +
+                    '                    <point start="42" end="122"/>' +
+                    '                    <point start="34" end="152"/>' +
+                    '                    <point start="56" end="139"/>' +
+                    '                    <point start="22" end="142"/>' +
+                    '                    <point start="48" end="112"/>' +
+                    '                    <point start="42" end="122"/>' +
+                    '                    <point start="34" end="152"/>' +
+                    '                    <point start="56" end="139"/>' +
+                    '                    <point start="22" end="142"/>' +
+                    '                    <point start="48" end="112"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf);
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

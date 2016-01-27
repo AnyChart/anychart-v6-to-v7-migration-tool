@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <charts>' +
+                    '        <chart plot_type="HeatMap">' +
+                    '            <palettes>' +
+                    '                <palette name="custom" type="Distinct">' +
+                    '                    <item color="#00A957"/>' +
+                    '                    <item color="#4DBA72"/>' +
+                    '                    <item color="#9CD088"/>' +
+                    '                    <item color="#D1E4A0"/>' +
+                    '                    <item color="#F0F2B8"/>' +
+                    '                </palette>' +
+                    '            </palettes>' +
+                    '            <thresholds>' +
+                    '                <threshold name="autoTr" type="AbsoluteDeviation" range_count="5" palette="custom"/>' +
+                    '            </thresholds>' +
+                    '            <data_plot_settings>' +
+                    '                <heat_map>' +
+                    '                    <heat_map_style>' +
+                    '                        <fill type="Gradient">' +
+                    '                            <gradient angle="90">' +
+                    '                                <key color="Blend(DarkColor(%Color),%Color,0.3)"/>' +
+                    '                                <key color="%Color"/>' +
+                    '                            </gradient>' +
+                    '                        </fill>' +
+                    '                        <effects enabled="true">' +
+                    '                            <bevel enabled="true" highlight_opacity="0.3" shadow_opacity="0.3" distance="2"/>' +
+                    '                        </effects>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <fill type="Gradient">' +
+                    '                                    <gradient angle="90">' +
+                    '                                        <key color="%Color"/>' +
+                    '                                        <key color="Blend(LightColor(%Color),%Color,0.5)"/>' +
+                    '                                    </gradient>' +
+                    '                                </fill>' +
+                    '                                <effects enabled="true">' +
+                    '                                    <bevel enabled="true" highlight_opacity="0.7" shadow_opacity="0.7" distance="3"/>' +
+                    '                                </effects>' +
+                    '                            </hover>' +
+                    '                            <pushed>' +
+                    '                                <effects enabled="true">' +
+                    '                                    <bevel enabled="true" highlight_opacity="0.5" shadow_opacity="0.5" distance="2"' +
+                    '                                           highlight_color="Black" shadow_color="White"/>' +
+                    '                                </effects>' +
+                    '                            </pushed>' +
+                    '                            <selected_normal>' +
+                    '                                <hatch_fill enabled="true" type="Percent50" opacity="1" color="Red"/>' +
+                    '                            </selected_normal>' +
+                    '                            <selected_hover>' +
+                    '                                <hatch_fill enabled="true" type="Percent50" opacity="1" color="Yellow"/>' +
+                    '                            </selected_hover>' +
+                    '                        </states>' +
+                    '                    </heat_map_style>' +
+                    '                    <tooltip_settings enabled="true">' +
+                    '                        <format>' +
+                    '                            Row: {%Row}' +
+                    '                            Column: {%Column}' +
+                    '                            Value: {%YValue}{numDecimals:0}' +
+                    '                        </format>' +
+                    '                        <background>' +
+                    '                            <corners type="Rounded" all="3"/>' +
+                    '                        </background>' +
+                    '                    </tooltip_settings>' +
+                    '                    <label_settings enabled="true">' +
+                    '                        <position anchor="Center" valign="Center" halign="Center" padding="0"/>' +
+                    '                        <format>{%Value}{numDecimals:0}</format>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <font>' +
+                    '                                    <effects enabled="true">' +
+                    '                                        <glow enabled="true" color="White" blur_x="3" blur_y="3" opacity="1"' +
+                    '                                              strength="2"/>' +
+                    '                                    </effects>' +
+                    '                                </font>' +
+                    '                            </hover>' +
+                    '                        </states>' +
+                    '                    </label_settings>' +
+                    '                </heat_map>' +
+                    '            </data_plot_settings>' +
+                    '            <chart_settings>' +
+                    '                <axes>' +
+                    '                    <x_axis>' +
+                    '                        <title>' +
+                    '                            <text>Columns</text>' +
+                    '                        </title>' +
+                    '                    </x_axis>' +
+                    '                    <y_axis>' +
+                    '                        <title>' +
+                    '                            <text>Rows</text>' +
+                    '                        </title>' +
+                    '                    </y_axis>' +
+                    '                </axes>' +
+                    '                <legend enabled="true" ignore_auto_item="True" rows_padding="2">' +
+                    '                    <format>{%Icon} {%RangeMin}{numDecimals:0} - {%RangeMax}{numDecimals:0}</format>' +
+                    '                    <title enabled="False"/>' +
+                    '                    <items>' +
+                    '                        <item source="Thresholds"/>' +
+                    '                    </items>' +
+                    '                </legend>' +
+                    '                <title>' +
+                    '                    <text>Heat Map: Automatic Threshold</text>' +
+                    '                </title>' +
+                    '            </chart_settings>' +
+                    '            <data>' +
+                    '                <series threshold="autoTr">' +
+                    '                    <point row="r0" column="c0" y="30"/>' +
+                    '                    <point row="r0" column="c1" y="28"/>' +
+                    '                    <point row="r0" column="c2" y="28"/>' +
+                    '                    <point row="r0" column="c3" y="30"/>' +
+                    '                    <point row="r0" column="c4" y="30"/>' +
+                    '                    <point row="r0" column="c5" y="29"/>' +
+                    '                    <point row="r0" column="c6" y="28"/>' +
+                    '                    <point row="r0" column="c7" y="26"/>' +
+                    '                    <point row="r0" column="c8" y="24"/>' +
+                    '                    <point row="r0" column="c9" y="23"/>' +
+                    '                    <point row="r0" column="c10" y="21"/>' +
+                    '                    <point row="r0" column="c11" y="20"/>' +
+                    '                    <point row="r0" column="c12" y="22"/>' +
+                    '                    <point row="r0" column="c13" y="22"/>' +
+                    '                    <point row="r0" column="c14" y="23"/>' +
+                    '                    <point row="r1" column="c0" y="22"/>' +
+                    '                    <point row="r1" column="c1" y="21"/>' +
+                    '                    <point row="r1" column="c2" y="22"/>' +
+                    '                    <point row="r1" column="c3" y="23"/>' +
+                    '                    <point row="r1" column="c4" y="22"/>' +
+                    '                    <point row="r1" column="c5" y="20"/>' +
+                    '                    <point row="r1" column="c6" y="18"/>' +
+                    '                    <point row="r1" column="c7" y="18"/>' +
+                    '                    <point row="r1" column="c8" y="20"/>' +
+                    '                    <point row="r1" column="c9" y="21"/>' +
+                    '                    <point row="r1" column="c10" y="22"/>' +
+                    '                    <point row="r1" column="c11" y="24"/>' +
+                    '                    <point row="r1" column="c12" y="26"/>' +
+                    '                    <point row="r1" column="c13" y="27"/>' +
+                    '                    <point row="r1" column="c14" y="29"/>' +
+                    '                    <point row="r2" column="c0" y="30"/>' +
+                    '                    <point row="r2" column="c1" y="28"/>' +
+                    '                    <point row="r2" column="c2" y="27"/>' +
+                    '                    <point row="r2" column="c3" y="27"/>' +
+                    '                    <point row="r2" column="c4" y="25"/>' +
+                    '                    <point row="r2" column="c5" y="23"/>' +
+                    '                    <point row="r2" column="c6" y="20"/>' +
+                    '                    <point row="r2" column="c7" y="18"/>' +
+                    '                    <point row="r2" column="c8" y="18"/>' +
+                    '                    <point row="r2" column="c9" y="20"/>' +
+                    '                    <point row="r2" column="c10" y="20"/>' +
+                    '                    <point row="r2" column="c11" y="18"/>' +
+                    '                    <point row="r2" column="c12" y="17"/>' +
+                    '                    <point row="r2" column="c13" y="18"/>' +
+                    '                    <point row="r2" column="c14" y="19"/>' +
+                    '                    <point row="r3" column="c0" y="20"/>' +
+                    '                    <point row="r3" column="c1" y="22"/>' +
+                    '                    <point row="r3" column="c2" y="20"/>' +
+                    '                    <point row="r3" column="c3" y="20"/>' +
+                    '                    <point row="r3" column="c4" y="19"/>' +
+                    '                    <point row="r3" column="c5" y="20"/>' +
+                    '                    <point row="r3" column="c6" y="22"/>' +
+                    '                    <point row="r3" column="c7" y="23"/>' +
+                    '                    <point row="r3" column="c8" y="24"/>' +
+                    '                    <point row="r3" column="c9" y="26"/>' +
+                    '                    <point row="r3" column="c10" y="24"/>' +
+                    '                    <point row="r3" column="c11" y="23"/>' +
+                    '                    <point row="r3" column="c12" y="20"/>' +
+                    '                    <point row="r3" column="c13" y="19"/>' +
+                    '                    <point row="r3" column="c14" y="16"/>' +
+                    '                    <point row="r4" column="c0" y="17"/>' +
+                    '                    <point row="r4" column="c1" y="15"/>' +
+                    '                    <point row="r4" column="c2" y="14" selected="true"/>' +
+                    '                    <point row="r4" column="c3" y="13"/>' +
+                    '                    <point row="r4" column="c4" y="11"/>' +
+                    '                    <point row="r4" column="c5" y="9"/>' +
+                    '                    <point row="r4" column="c6" y="7"/>' +
+                    '                    <point row="r4" column="c7" y="8"/>' +
+                    '                    <point row="r4" column="c8" y="8"/>' +
+                    '                    <point row="r4" column="c9" y="7"/>' +
+                    '                    <point row="r4" column="c10" y="4"/>' +
+                    '                    <point row="r4" column="c11" y="6"/>' +
+                    '                    <point row="r4" column="c12" y="5"/>' +
+                    '                    <point row="r4" column="c13" y="6"/>' +
+                    '                    <point row="r4" column="c14" y="7"/>' +
+                    '                    <point row="r5" column="c0" y="6"/>' +
+                    '                    <point row="r5" column="c1" y="6"/>' +
+                    '                    <point row="r5" column="c2" y="4"/>' +
+                    '                    <point row="r5" column="c3" y="6"/>' +
+                    '                    <point row="r5" column="c4" y="6"/>' +
+                    '                    <point row="r5" column="c5" y="7"/>' +
+                    '                    <point row="r5" column="c6" y="10"/>' +
+                    '                    <point row="r5" column="c7" y="12"/>' +
+                    '                    <point row="r5" column="c8" y="12"/>' +
+                    '                    <point row="r5" column="c9" y="12"/>' +
+                    '                    <point row="r5" column="c10" y="10"/>' +
+                    '                    <point row="r5" column="c11" y="10"/>' +
+                    '                    <point row="r5" column="c12" y="13"/>' +
+                    '                    <point row="r5" column="c13" y="15"/>' +
+                    '                    <point row="r5" column="c14" y="16"/>' +
+                    '                    <point row="r6" column="c0" y="14"/>' +
+                    '                    <point row="r6" column="c1" y="12"/>' +
+                    '                    <point row="r6" column="c2" y="12"/>' +
+                    '                    <point row="r6" column="c3" y="9"/>' +
+                    '                    <point row="r6" column="c4" y="9"/>' +
+                    '                    <point row="r6" column="c5" y="8"/>' +
+                    '                    <point row="r6" column="c6" y="6"/>' +
+                    '                    <point row="r6" column="c7" y="4"/>' +
+                    '                    <point row="r6" column="c8" y="5"/>' +
+                    '                    <point row="r6" column="c9" y="6"/>' +
+                    '                    <point row="r6" column="c10" y="4"/>' +
+                    '                    <point row="r6" column="c11" y="3"/>' +
+                    '                    <point row="r6" column="c12" y="3"/>' +
+                    '                    <point row="r6" column="c13" y="3"/>' +
+                    '                    <point row="r6" column="c14" y="5"/>' +
+                    '                    <point row="r7" column="c0" y="3"/>' +
+                    '                    <point row="r7" column="c1" y="3"/>' +
+                    '                    <point row="r7" column="c2" y="1"/>' +
+                    '                    <point row="r7" column="c3" y="1"/>' +
+                    '                    <point row="r7" column="c4" y="2"/>' +
+                    '                    <point row="r7" column="c5" y="4"/>' +
+                    '                    <point row="r7" column="c6" y="5"/>' +
+                    '                    <point row="r7" column="c7" y="7"/>' +
+                    '                    <point row="r7" column="c8" y="8"/>' +
+                    '                    <point row="r7" column="c9" y="10"/>' +
+                    '                    <point row="r7" column="c10" y="12"/>' +
+                    '                    <point row="r7" column="c11" y="14"/>' +
+                    '                    <point row="r7" column="c12" y="15"/>' +
+                    '                    <point row="r7" column="c13" y="16"/>' +
+                    '                    <point row="r7" column="c14" y="19"/>' +
+                    '                    <point row="r8" column="c0" y="19"/>' +
+                    '                    <point row="r8" column="c1" y="20"/>' +
+                    '                    <point row="r8" column="c2" y="19"/>' +
+                    '                    <point row="r8" column="c3" y="18"/>' +
+                    '                    <point row="r8" column="c4" y="18"/>' +
+                    '                    <point row="r8" column="c5" y="17"/>' +
+                    '                    <point row="r8" column="c6" y="14"/>' +
+                    '                    <point row="r8" column="c7" y="12"/>' +
+                    '                    <point row="r8" column="c8" y="14"/>' +
+                    '                    <point row="r8" column="c9" y="15"/>' +
+                    '                    <point row="r8" column="c10" y="17"/>' +
+                    '                    <point row="r8" column="c11" y="19"/>' +
+                    '                    <point row="r8" column="c12" y="20"/>' +
+                    '                    <point row="r8" column="c13" y="19"/>' +
+                    '                    <point row="r8" column="c14" y="19"/>' +
+                    '                    <point row="r9" column="c0" y="19"/>' +
+                    '                    <point row="r9" column="c1" y="20"/>' +
+                    '                    <point row="r9" column="c2" y="20"/>' +
+                    '                    <point row="r9" column="c3" y="19"/>' +
+                    '                    <point row="r9" column="c4" y="20"/>' +
+                    '                    <point row="r9" column="c5" y="19"/>' +
+                    '                    <point row="r9" column="c6" y="20"/>' +
+                    '                    <point row="r9" column="c7" y="20"/>' +
+                    '                    <point row="r9" column="c8" y="20"/>' +
+                    '                    <point row="r9" column="c9" y="18"/>' +
+                    '                    <point row="r9" column="c10" y="17"/>' +
+                    '                    <point row="r9" column="c11" y="19"/>' +
+                    '                    <point row="r9" column="c12" y="18"/>' +
+                    '                    <point row="r9" column="c13" y="15"/>' +
+                    '                    <point row="r9" column="c14" y="15"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf, 'single');
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

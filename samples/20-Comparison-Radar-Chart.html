@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <charts>' +
+                    '        <chart plot_type="Radar">' +
+                    '            <chart_settings>' +
+                    '                <title enabled="true">' +
+                    '                    <text><![CDATA[Comparison Chart]]></text>' +
+                    '                </title>' +
+                    '                <footer enabled="true" align="Center">' +
+                    '                    <background enabled="false"/>' +
+                    '                    <font render_as_html="true"/>' +
+                    '                    <text>' +
+                    '                        <![CDATA[<font face="Tahoma" size="10" color="#444444">This chart compares countries by using specific indicators. <br/>For each indicator, the value 1 is assigned to the country that has the highest value. <br/>Other countries have their value computed as a proportion of the country with the highest value.</b>]]></text>' +
+                    '                </footer>' +
+                    '                <axes>' +
+                    '                    <y_axis>' +
+                    '                        <scale minimum="-0.2" maximum="1"/>' +
+                    '                    </y_axis>' +
+                    '                    <x_axis>' +
+                    '                        <labels padding="5">' +
+                    '                            <font bold="false"/>' +
+                    '                        </labels>' +
+                    '                    </x_axis>' +
+                    '                </axes>' +
+                    '                <legend enabled="true" position="Bottom" align="Center">' +
+                    '                    <title enabled="false"/>' +
+                    '                    <icon type="Box"/>' +
+                    '                </legend>' +
+                    '            </chart_settings>' +
+                    '            <data_plot_settings>' +
+                    '                <radar>' +
+                    '                </radar>' +
+                    '            </data_plot_settings>' +
+                    '            <styles>' +
+                    '                <tooltip_style name="idGeneralTooltip">' +
+                    '                    <font render_as_html="true">' +
+                    '                    </font>' +
+                    '                    <format>' +
+                    '                        <![CDATA[<font color="{%Color}" size="12">■ </font><b><font face="Verdana" color="{%Color}">{%SeriesName}</font> <font face="Verdana" size="9"></b> {%Name}: {%YValue}{numDecimals:2,trailingZeros:false}</font>]]></format>' +
+                    '                    <background>' +
+                    '                        <corners type="Rounded" all="3"/>' +
+                    '                        <inside_margin left="5" top="2" right="5" bottom="2"/>' +
+                    '                    </background>' +
+                    '                </tooltip_style>' +
+                    '            </styles>' +
+                    '            <data>' +
+                    '                <series name="USA" type="Line">' +
+                    '                    <tooltip enabled="true" style="idGeneralTooltip"/>' +
+                    '                    <point name="GDP" y="1"/>' +
+                    '                    <point name="GDP Real Growth Rate" y="0.3666666666666667"/>' +
+                    '                    <point name="Infant Mortality" y="0.06578947368421052"/>' +
+                    '                    <point name="Life Expectancy" y="0.9576093653727663"/>' +
+                    '                    <point name="Population" y="0.22638827767366515"/>' +
+                    '                    <point name="Area" y="0.5390698290165805"/>' +
+                    '                    <point name="Density" y="0.02995156531259858"/>' +
+                    '                    <point name="Population Growth Rate" y="0.3087248322147651"/>' +
+                    '                </series>' +
+                    '                <series name="Russia" type="Line">' +
+                    '                    <tooltip enabled="true" style="idGeneralTooltip"/>' +
+                    '                    <point name="GDP" y="0.11982978723404256"/>' +
+                    '                    <point name="GDP Real Growth Rate" y="0.5583333333333333"/>' +
+                    '                    <point name="Infant Mortality" y="0.15576923076923077"/>' +
+                    '                    <point name="Life Expectancy" y="0.8268638324091188"/>' +
+                    '                    <point name="Population" y="0.10979008847837246"/>' +
+                    '                    <point name="Area" y="1"/>' +
+                    '                    <point name="Density" y="0.00783120233080335"/>' +
+                    '                    <point name="Population Growth Rate" y="-0.12416107382550336"/>' +
+                    '                </series>' +
+                    '                <series name="China" type="Line">' +
+                    '                    <tooltip enabled="true" style="idGeneralTooltip"/>' +
+                    '                    <point name="GDP" y="0.6180425531914894"/>' +
+                    '                    <point name="GDP Real Growth Rate" y="0.7583333333333333"/>' +
+                    '                    <point name="Infant Mortality" y="0.24473684210526317"/>' +
+                    '                    <point name="Life Expectancy" y="0.8905730129390017"/>' +
+                    '                    <point name="Population" y="1"/>' +
+                    '                    <point name="Area" y="0.5487479259581779"/>' +
+                    '                    <point name="Density" y="0.1299664111937944"/>' +
+                    '                    <point name="Population Growth Rate" y="0.19463087248322147"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf);
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <charts>' +
+                    '        <chart plot_type="CategorizedHorizontal">' +
+                    '            <data_plot_settings default_series_type="Bar">' +
+                    '                <bar_series group_padding="0.2" style="AquaLight">' +
+                    '                    <tooltip_settings enabled="true">' +
+                    '                        <format>{%Name} - {%Value}</format>' +
+                    '                    </tooltip_settings>' +
+                    '                </bar_series>' +
+                    '            </data_plot_settings>' +
+                    '            <chart_settings>' +
+                    '                <title enabled="true">' +
+                    '                    <text>Engine Temperature</text>' +
+                    '                </title>' +
+                    '                <axes>' +
+                    '                    <y_axis position="Opposite">' +
+                    '                        <title enabled="False"/>' +
+                    '                        <scale maximum_offset="0" major_interval="10"/>' +
+                    '                        <labels>' +
+                    '                            <format>{%Value}{numDecimals:0}</format>' +
+                    '                        </labels>' +
+                    '                        <axis_markers>' +
+                    '                            <ranges>' +
+                    '                                <range minimum="0" maximum="30">' +
+                    '                                    <label enabled="True" rotation="0">' +
+                    '                                        <format>Low</format>' +
+                    '                                        <font bold="True" color="Green"/>' +
+                    '                                    </label>' +
+                    '                                    <fill color="Green" opacity="0.3"/>' +
+                    '                                    <minimum_line enabled="False"/>' +
+                    '                                    <maximum_line enabled="False"/>' +
+                    '                                </range>' +
+                    '                                <range minimum="30" maximum="60">' +
+                    '                                    <label enabled="True" rotation="0">' +
+                    '                                        <format>Medium</format>' +
+                    '                                        <font bold="True" color="DarkColor(Gold)"/>' +
+                    '                                    </label>' +
+                    '                                    <fill color="Gold" opacity="0.3"/>' +
+                    '                                    <minimum_line enabled="False"/>' +
+                    '                                    <maximum_line enabled="False"/>' +
+                    '                                </range>' +
+                    '                                <range minimum="60" maximum="100">' +
+                    '                                    <label enabled="True" rotation="0">' +
+                    '                                        <format>High</format>' +
+                    '                                        <font bold="True" color="DarkRed"/>' +
+                    '                                    </label>' +
+                    '                                    <fill color="Red" opacity="0.3"/>' +
+                    '                                    <minimum_line enabled="False"/>' +
+                    '                                    <maximum_line enabled="False"/>' +
+                    '                                </range>' +
+                    '                            </ranges>' +
+                    '                        </axis_markers>' +
+                    '                    </y_axis>' +
+                    '                    <x_axis>' +
+                    '                        <title>' +
+                    '                            <text>Time</text>' +
+                    '                        </title>' +
+                    '                        <labels rotation="0">' +
+                    '                        </labels>' +
+                    '                    </x_axis>' +
+                    '                </axes>' +
+                    '            </chart_settings>' +
+                    '            <data>' +
+                    '                <series name="Series 1">' +
+                    '                    <point name="01:10" y="28.14"/>' +
+                    '                    <point name="01:15" y="12.61"/>' +
+                    '                    <point name="01:20" y="63.21"/>' +
+                    '                    <point name="01:25" y="29.98"/>' +
+                    '                    <point name="01:30" y="12.54"/>' +
+                    '                    <point name="01:35" y="14.19"/>' +
+                    '                    <point name="01:40" y="50.67"/>' +
+                    '                    <point name="01:45" y="20.43"/>' +
+                    '                    <point name="01:50" y="43.76"/>' +
+                    '                    <point name="01:55" y="91.34"/>' +
+                    '                    <point name="02:00" y="34.17"/>' +
+                    '                    <point name="02:05" y="45.72"/>' +
+                    '                    <point name="02:10" y="22.56"/>' +
+                    '                    <point name="02:15" y="87.12"/>' +
+                    '                    <point name="02:20" y="54.32"/>' +
+                    '                    <point name="02:25" y="33.08"/>' +
+                    '                    <point name="02:30" y="41.12"/>' +
+                    '                    <point name="02:35" y="38.67"/>' +
+                    '                    <point name="02:40" y="35.06"/>' +
+                    '                    <point name="02:45" y="46.18"/>' +
+                    '                    <point name="02:50" y="52.29"/>' +
+                    '                    <point name="02:55" y="73.01"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf);
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

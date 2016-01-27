@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <settings>' +
+                    '        <animation enabled="True"/>' +
+                    '    </settings>' +
+                    '    <charts>' +
+                    '        <chart plot_type="doughnut">' +
+                    '            <data_plot_settings enable_3d_mode="true">' +
+                    '                <pie_series>' +
+                    '                    <tooltip_settings enabled="true">' +
+                    '                        <position anchor="CenterTop" padding="10"/>' +
+                    '                        <format>${%Value}{scale:(1000)(1000)(1000)|( th)( mil)( bil),numDecimals:2}</format>' +
+                    '                    </tooltip_settings>' +
+                    '                    <label_settings enabled="true">' +
+                    '                        <position anchor="Center" valign="Center" halign="Center" padding="0"/>' +
+                    '                        <background enabled="false"/>' +
+                    '                        <font size="10" color="White">' +
+                    '                            <effects>' +
+                    '                                <drop_shadow enabled="true" distance="1" blur_x="2" blur_y="2"/>' +
+                    '                            </effects>' +
+                    '                        </font>' +
+                    '                        <format>{%YPercentOfSeries}{numDecimals:1}%</format>' +
+                    '                    </label_settings>' +
+                    '                    <marker_settings enabled="true">' +
+                    '                        <marker type="None"/>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <marker type="Circle" anchor="CenterTop"/>' +
+                    '                            </hover>' +
+                    '                        </states>' +
+                    '                    </marker_settings>' +
+                    '                </pie_series>' +
+                    '            </data_plot_settings>' +
+                    '            <data>' +
+                    '                <series name="Year 2003" type="Pie">' +
+                    '                    <point name="Department Stores" y="6371664"/>' +
+                    '                    <point name="Discount Stores" y="7216301"/>' +
+                    '                    <point name="Men\'s/Women\'s Stores" y="1486621"/>' +
+                    '                    <point name="Juvenile Specialty Stores" y="786622"/>' +
+                    '                    <point name="All other outlets" y="900000" color="DarkSeaGreen"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '            <chart_settings>' +
+                    '                <title enabled="true" padding="20">' +
+                    '                    <text>ACME Corp. apparel sales through different retail channels</text>' +
+                    '                </title>' +
+                    '                <legend enabled="true" ignore_auto_item="true" position="bottom">' +
+                    '                    <title enabled="false"/>' +
+                    '                    <items>' +
+                    '                        <item source="points"/>' +
+                    '                    </items>' +
+                    '                </legend>' +
+                    '            </chart_settings>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf, 'single');
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

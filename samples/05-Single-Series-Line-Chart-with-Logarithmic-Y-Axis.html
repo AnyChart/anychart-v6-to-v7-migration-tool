@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <settings>' +
+                    '        <animation enabled="True"/>' +
+                    '    </settings>' +
+                    '    <charts>' +
+                    '        <chart plot_type="CategorizedVertical">' +
+                    '            <chart_settings>' +
+                    '                <title enabled="true">' +
+                    '                    <text>Single-Series: Line Chart with Logarithmic Y-Axis</text>' +
+                    '                </title>' +
+                    '                <axes>' +
+                    '                    <x_axis tickmarks_placement="Center">' +
+                    '                        <title enabled="true">' +
+                    '                            <text>Arguments</text>' +
+                    '                        </title>' +
+                    '                    </x_axis>' +
+                    '                    <y_axis>' +
+                    '                        <scale minimum="1" type="Logarithmic" log_base="5"/>' +
+                    '                        <title enabled="true">' +
+                    '                            <text>Values: {%AxisMin} - {%AxisMax}</text>' +
+                    '                        </title>' +
+                    '                    </y_axis>' +
+                    '                </axes>' +
+                    '            </chart_settings>' +
+                    '            <data_plot_settings default_series_type="Line">' +
+                    '                <line_series point_padding="0.2" group_padding="1">' +
+                    '                    <label_settings enabled="true">' +
+                    '                        <background enabled="false"/>' +
+                    '                        <font color="Rgb(45,45,45)" bold="true" size="9">' +
+                    '                            <effects enabled="true">' +
+                    '                                <glow enabled="true" color="White" opacity="1" blur_x="1.5" blur_y="1.5" strength="3"/>' +
+                    '                            </effects>' +
+                    '                        </font>' +
+                    '                        <format>{%YValue}{numDecimals:0}</format>' +
+                    '                    </label_settings>' +
+                    '                    <tooltip_settings enabled="true">' +
+                    '                        <format>' +
+                    '                            Value: {%YValue}{numDecimals:2}' +
+                    '                            Argument: {%Name}' +
+                    '                        </format>' +
+                    '                        <background>' +
+                    '                            <border type="Solid" color="DarkColor(%Color)"/>' +
+                    '                        </background>' +
+                    '                        <font color="DarkColor(%Color)"/>' +
+                    '                    </tooltip_settings>' +
+                    '                    <marker_settings enabled="true"/>' +
+                    '                    <line_style>' +
+                    '                        <line thickness="3"/>' +
+                    '                    </line_style>' +
+                    '                </line_series>' +
+                    '            </data_plot_settings>' +
+                    '            <data>' +
+                    '                <series name="Series 1">' +
+                    '                    <point name="P1" y="128.14"/>' +
+                    '                    <point name="P2" y="112.61"/>' +
+                    '                    <point name="P3" y="163.21"/>' +
+                    '                    <point name="P4" y="229.98"/>' +
+                    '                    <point name="P5" y="2790.54"/>' +
+                    '                    <point name="P6" y="4104.19"/>' +
+                    '                    <point name="P7" y="3250.67"/>' +
+                    '                    <point name="P8" y="5720.43"/>' +
+                    '                    <point name="P9" y="43.76"/>' +
+                    '                    <point name="P10" y="61.34"/>' +
+                    '                    <point name="P11" y="34.17"/>' +
+                    '                    <point name="P12" y="45.72"/>' +
+                    '                    <point name="P13" y="122.56"/>' +
+                    '                    <point name="P14" y="87.12"/>' +
+                    '                    <point name="P15" y="54.32"/>' +
+                    '                    <point name="P16" y="33.08"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf);
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

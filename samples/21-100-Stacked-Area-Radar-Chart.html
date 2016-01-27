@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <charts>' +
+                    '        <chart plot_type="Radar">' +
+                    '            <chart_settings>' +
+                    '                <title>' +
+                    '                    <text><![CDATA[Products Sales by Year (2007-2011) (Stacked)]]></text>' +
+                    '                </title>' +
+                    '                <axes>' +
+                    '                    <y_axis>' +
+                    '                        <scale mode="PercentStacked" minimum="0" maximum="100" major_interval="20"/>' +
+                    '                        <minor_tickmark enabled="true"/>' +
+                    '                        <labels>' +
+                    '                            <format><![CDATA[{%Value}{trailingZeros:false}%]]></format>' +
+                    '                        </labels>' +
+                    '                    </y_axis>' +
+                    '                    <x_axis>' +
+                    '                        <labels>' +
+                    '                            <format><![CDATA[{%Value}{enabled:false}]]></format>' +
+                    '                        </labels>' +
+                    '                    </x_axis>' +
+                    '                </axes>' +
+                    '                <legend enabled="true">' +
+                    '                    <title enabled="false"/>' +
+                    '                </legend>' +
+                    '            </chart_settings>' +
+                    '            <data_plot_settings>' +
+                    '                <area_series>' +
+                    '                    <area_style>' +
+                    '                        <fill opacity="0.6"/>' +
+                    '                    </area_style>' +
+                    '                </area_series>' +
+                    '                <radar display_data_mode="UnderAxes"/>' +
+                    '            </data_plot_settings>' +
+                    '            <styles>' +
+                    '                <tooltip_style name="idTooltipStyle">' +
+                    '                    <format><![CDATA[{%SeriesName}' +
+                    '{%Name}{enabled:false}: {%YPercentOfCategory}%/ {%YValue}{scale:(1)(1000)(1000)(1000)|()(K)(M)(B),trailingZeros:false}]]></format>' +
+                    '                    <background>' +
+                    '                        <inside_margin left="5" top="2" right="5" bottom="2"/>' +
+                    '                        <corners type="Rounded" all="3"/>' +
+                    '                    </background>' +
+                    '                </tooltip_style>' +
+                    '            </styles>' +
+                    '            <data>' +
+                    '                <series type="Area">' +
+                    '                    <name><![CDATA[Product A]]></name>' +
+                    '                    <marker enabled="true"/>' +
+                    '                    <tooltip enabled="true" style="idTooltipStyle"/>' +
+                    '                    <point name="2007" y="1368763"/>' +
+                    '                    <point name="2008" y="799873"/>' +
+                    '                    <point name="2009" y="1497653"/>' +
+                    '                    <point name="2010" y="1351874"/>' +
+                    '                    <point name="2011" y="1582987"/>' +
+                    '                </series>' +
+                    '                <series type="Area">' +
+                    '                    <name><![CDATA[Product B]]></name>' +
+                    '                    <marker enabled="true"/>' +
+                    '                    <tooltip enabled="true" style="idTooltipStyle"/>' +
+                    '                    <point name="2007" y="1991297"/>' +
+                    '                    <point name="2008" y="1254823"/>' +
+                    '                    <point name="2009" y="1732987"/>' +
+                    '                    <point name="2010" y="332871"/>' +
+                    '                    <point name="2011" y="649853"/>' +
+                    '                </series>' +
+                    '                <series type="Area">' +
+                    '                    <name><![CDATA[Product C]]></name>' +
+                    '                    <marker enabled="true"/>' +
+                    '                    <tooltip enabled="true" style="idTooltipStyle"/>' +
+                    '                    <point name="2007" y="431097"/>' +
+                    '                    <point name="2008" y="561983"/>' +
+                    '                    <point name="2009" y="1019874"/>' +
+                    '                    <point name="2010" y="2027634"/>' +
+                    '                    <point name="2011" y="1961085"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf);
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

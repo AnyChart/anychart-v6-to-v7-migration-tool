@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <settings>' +
+                    '        <animation enabled="True"/>' +
+                    '    </settings>' +
+                    '    <charts>' +
+                    '        <chart plot_type="Pie">' +
+                    '            <data_plot_settings enable_3d_mode="false">' +
+                    '                <pie_series>' +
+                    '                    <tooltip_settings enabled="true">' +
+                    '                        <format><![CDATA[{%Name}' +
+                    'Sales: ${%Value}' +
+                    'Percent: {%YPercentOfSeries}{numDecimals: 2}%]]></format>' +
+                    '                        <background>' +
+                    '                            <corners type="Rounded" all="3"/>' +
+                    '                        </background>' +
+                    '                    </tooltip_settings>' +
+                    '                    <label_settings enabled="true" mode="Outside" multi_line_align="Center">' +
+                    '                        <background enabled="false"/>' +
+                    '                        <position anchor="Center" valign="Center" halign="Center" padding="20"/>' +
+                    '                        <format><![CDATA[{%Name}' +
+                    '${%Value} ({%YPercentOfSeries}{numDecimals:1}%)]]></format>' +
+                    '                        <font bold="False"/>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <font underline="true"/>' +
+                    '                            </hover>' +
+                    '                        </states>' +
+                    '                    </label_settings>' +
+                    '                    <connector color="Black" opacity="0.4"/>' +
+                    '                </pie_series>' +
+                    '            </data_plot_settings>' +
+                    '            <data>' +
+                    '                <series name="Series 1">' +
+                    '                    <point name="Product A" y="1222"/>' +
+                    '                    <point name="Product B" y="2431"/>' +
+                    '                    <point name="Product C" y="3624"/>' +
+                    '                    <point name="Product D" y="5243"/>' +
+                    '                    <point name="Product E" y="8813"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '            <chart_settings>' +
+                    '                <title enabled="true" padding="15">' +
+                    '                    <text>2D Pie Chart: Outside Labels with connectors</text>' +
+                    '                </title>' +
+                    '            </chart_settings>' +
+                    '        </chart>' +
+                    '    </charts>' +
+            '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf, 'single');
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.startAngle(90);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

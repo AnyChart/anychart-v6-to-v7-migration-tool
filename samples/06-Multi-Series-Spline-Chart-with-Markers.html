@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <settings>' +
+                    '        <animation enabled="True"/>' +
+                    '    </settings>' +
+                    '    <charts>' +
+                    '        <chart plot_type="CategorizedVertical">' +
+                    '            <chart_settings>' +
+                    '                <title>' +
+                    '                    <text>Multi-Series: Spline Chart with Markers</text>' +
+                    '                    <background enabled="false"/>' +
+                    '                </title>' +
+                    '            </chart_settings>' +
+                    '            <data_plot_settings default_series_type="Spline">' +
+                    '                <line_series>' +
+                    '                    <marker_settings>' +
+                    '                        <marker size="8"/>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <marker size="12"/>' +
+                    '                            </hover>' +
+                    '                        </states>' +
+                    '                    </marker_settings>' +
+                    '                    <tooltip_settings enabled="True"/>' +
+                    '                </line_series>' +
+                    '            </data_plot_settings>' +
+                    '            <data>' +
+                    '                <series name="Series 1">' +
+                    '                    <point name="P1" y="42"/>' +
+                    '                    <point name="P2" y="34"/>' +
+                    '                    <point name="P3" y="56"/>' +
+                    '                    <point name="P4" y="22"/>' +
+                    '                    <point name="P5" y="48"/>' +
+                    '                </series>' +
+                    '                <series name="Series 2">' +
+                    '                    <point name="P1" y="13"/>' +
+                    '                    <point name="P2" y="25"/>' +
+                    '                    <point name="P3" y="76"/>' +
+                    '                    <point name="P4" y="86"/>' +
+                    '                    <point name="P5" y="95"/>' +
+                    '                </series>' +
+                    '                <series name="Series 3">' +
+                    '                    <point name="P1" y="75"/>' +
+                    '                    <point name="P2" y="56"/>' +
+                    '                    <point name="P3" y="67"/>' +
+                    '                    <point name="P4" y="42"/>' +
+                    '                    <point name="P5" y="17"/>' +
+                    '                </series>' +
+                    '                <series name="Series 4">' +
+                    '                    <point name="P1" y="33"/>' +
+                    '                    <point name="P2" y="39"/>' +
+                    '                    <point name="P3" y="46"/>' +
+                    '                    <point name="P4" y="69"/>' +
+                    '                    <point name="P5" y="87"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf);
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

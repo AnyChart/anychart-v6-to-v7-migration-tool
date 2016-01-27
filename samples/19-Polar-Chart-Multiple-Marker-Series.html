@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <charts>' +
+                    '        <chart plot_type="Polar">' +
+                    '            <chart_settings>' +
+                    '                <title enabled="false"/>' +
+                    '                <axes>' +
+                    '                    <y_axis>' +
+                    '                        <major_grid interlaced="true"/>' +
+                    '                    </y_axis>' +
+                    '                    <x_axis>' +
+                    '                        <scale minimum="0" maximum="360" major_interval="15"/>' +
+                    '                        <major_grid interlaced="true"/>' +
+                    '                        <labels padding="2" circular_labels_style="Horizontal">' +
+                    '                            <font bold="false"/>' +
+                    '                            <format><![CDATA[{%Value}{numDecimals:0}°]]></format>' +
+                    '                        </labels>' +
+                    '                    </x_axis>' +
+                    '                </axes>' +
+                    '                <legend enabled="true">' +
+                    '                    <title enabled="false"/>' +
+                    '                </legend>' +
+                    '            </chart_settings>' +
+                    '            <data_plot_settings>' +
+                    '                <polar start_angle="90">' +
+                    '                    <background>' +
+                    '                        <fill type="Solid" color="#FFFFFF"/>' +
+                    '                        <border enabled="false"/>' +
+                    '                    </background>' +
+                    '                </polar>' +
+                    '                <marker_series>' +
+                    '                    <marker_style>' +
+                    '                        <fill type="Gradient">' +
+                    '                            <gradient type="Linear" angle="45">' +
+                    '                                <key color="%Color">' +
+                    '                                </key>' +
+                    '                                <key color="DarkColor(%Color)">' +
+                    '                                </key>' +
+                    '                            </gradient>' +
+                    '                        </fill>' +
+                    '                        <marker size="8"/>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <marker size="14"/>' +
+                    '                            </hover>' +
+                    '                        </states>' +
+                    '                    </marker_style>' +
+                    '                </marker_series>' +
+                    '            </data_plot_settings>' +
+                    '            <styles>' +
+                    '                <tooltip_style name="idTooltipStyle">' +
+                    '                    <font render_as_html="true"/>' +
+                    '                    <format>' +
+                    '                        <![CDATA[<font color="{%Color}" size="13">■</font> <font face="Tahoma" size="12">{%SeriesName}<br/><tab/> Angle: {%XValue}{numDecimals:2}<br/><tab/> Value: {%YValue}{numDecimals:4,trailingZeros:false}</font>]]></format>' +
+                    '                    <background>' +
+                    '                        <inside_margin left="5" top="2" right="5" bottom="2"/>' +
+                    '                        <corners type="Rounded" all="3"/>' +
+                    '                    </background>' +
+                    '                </tooltip_style>' +
+                    '            </styles>' +
+                    '            <data>' +
+                    '                <series name="Signal A" type="Marker">' +
+                    '                    <tooltip enabled="true" style="idTooltipStyle"/>' +
+                    '                    <point x="15" y="9"/>' +
+                    '                    <point x="30" y="7"/>' +
+                    '                    <point x="45" y="10"/>' +
+                    '                    <point x="60" y="7"/>' +
+                    '                    <point x="75" y="8"/>' +
+                    '                    <point x="90" y="7"/>' +
+                    '                    <point x="105" y="9"/>' +
+                    '                    <point x="120" y="3"/>' +
+                    '                    <point x="135" y="6"/>' +
+                    '                    <point x="150" y="2"/>' +
+                    '                    <point x="165" y="5"/>' +
+                    '                    <point x="180" y="6"/>' +
+                    '                    <point x="195" y="3"/>' +
+                    '                    <point x="210" y="6"/>' +
+                    '                    <point x="225" y="6"/>' +
+                    '                    <point x="240" y="6"/>' +
+                    '                    <point x="255" y="5"/>' +
+                    '                    <point x="270" y="4"/>' +
+                    '                    <point x="285" y="10"/>' +
+                    '                    <point x="300" y="4"/>' +
+                    '                    <point x="315" y="8"/>' +
+                    '                    <point x="330" y="5"/>' +
+                    '                    <point x="345" y="6"/>' +
+                    '                    <point x="360" y="3"/>' +
+                    '                </series>' +
+                    '                <series name="Signal B" type="Marker">' +
+                    '                    <tooltip enabled="true" style="idTooltipStyle"/>' +
+                    '                    <point x="14.29" y="10.7"/>' +
+                    '                    <point x="42.96" y="8.75"/>' +
+                    '                    <point x="57.64" y="8.82"/>' +
+                    '                    <point x="57.7" y="9.83"/>' +
+                    '                    <point x="54.94" y="11.1"/>' +
+                    '                    <point x="26.39" y="4.91"/>' +
+                    '                    <point x="49.62" y="11.81"/>' +
+                    '                    <point x="87.82" y="6.82"/>' +
+                    '                    <point x="81.56" y="7.71"/>' +
+                    '                    <point x="44.62" y="5.18"/>' +
+                    '                    <point x="107.54" y="4.75"/>' +
+                    '                    <point x="43.88" y="10.07"/>' +
+                    '                    <point x="56.48" y="6.11"/>' +
+                    '                    <point x="123.22" y="7.16"/>' +
+                    '                    <point x="144.81" y="6.54"/>' +
+                    '                    <point x="129.37" y="10.22"/>' +
+                    '                    <point x="158.61" y="6.11"/>' +
+                    '                    <point x="74.77" y="6.74"/>' +
+                    '                    <point x="19.45" y="14.41"/>' +
+                    '                    <point x="156.2" y="6.7"/>' +
+                    '                    <point x="220.43" y="12.49"/>' +
+                    '                    <point x="124.03" y="8.41"/>' +
+                    '                    <point x="47.04" y="10.24"/>' +
+                    '                    <point x="3.5" y="6.99"/>' +
+                    '                </series>' +
+                    '                <series name="Signal C" type="Marker">' +
+                    '                    <tooltip enabled="true" style="idTooltipStyle"/>' +
+                    '                    <point x="8.589" y="13.44"/>' +
+                    '                    <point x="10.59" y="9.12"/>' +
+                    '                    <point x="54.26" y="6.15"/>' +
+                    '                    <point x="66.81" y="8.23"/>' +
+                    '                    <point x="19.95" y="7.7"/>' +
+                    '                    <point x="23.21" y="5.36"/>' +
+                    '                    <point x="9.49" y="13.19"/>' +
+                    '                    <point x="98.62" y="7.02"/>' +
+                    '                    <point x="35.13" y="9.22"/>' +
+                    '                    <point x="62.21" y="4.61"/>' +
+                    '                    <point x="161.42" y="7.75"/>' +
+                    '                    <point x="153.18" y="5.65"/>' +
+                    '                    <point x="153.08" y="5.42"/>' +
+                    '                    <point x="127.81" y="9.73"/>' +
+                    '                    <point x="120.58" y="5.02"/>' +
+                    '                    <point x="91.01" y="8.48"/>' +
+                    '                    <point x="90.15" y="6.5"/>' +
+                    '                    <point x="5.8" y="7.53"/>' +
+                    '                    <point x="144.32" y="6.37"/>' +
+                    '                    <point x="284.68" y="6.01"/>' +
+                    '                    <point x="34.43" y="11.25"/>' +
+                    '                    <point x="120.56" y="4.62"/>' +
+                    '                    <point x="131.05" y="9.04"/>' +
+                    '                    <point x="3.5" y="5.47"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf);
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

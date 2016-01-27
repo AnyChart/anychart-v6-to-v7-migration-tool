@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <settings>' +
+                    '        <animation enabled="True"/>' +
+                    '    </settings>' +
+                    '    <charts>' +
+                    '        <chart type="CategorizedVertical">' +
+                    '            <chart_settings>' +
+                    '                <title>' +
+                    '                    <text>Spline-Area Chart: with Missing Points</text>' +
+                    '                    <background enabled="false"/>' +
+                    '                </title>' +
+                    '                <axes>' +
+                    '                    <x_axis tickmarks_placement="Center"/>' +
+                    '                </axes>' +
+                    '            </chart_settings>' +
+                    '            <data_plot_settings default_series_type="Area">' +
+                    '                <area_series>' +
+                    '                    <area_style>' +
+                    '                        <line enabled="true" color="DarkColor(%Color)"/>' +
+                    '                        <fill type="Gradient" opacity="1">' +
+                    '                            <gradient angle="90">' +
+                    '                                <key position="0" color="%Color" opacity="1"/>' +
+                    '                                <key position="1" color="DarkColor(%Color)" opacity="1"/>' +
+                    '                            </gradient>' +
+                    '                        </fill>' +
+                    '                        <states>' +
+                    '                            <hover color="White"/>' +
+                    '                        </states>' +
+                    '                    </area_style>' +
+                    '                    <marker_settings enabled="True">' +
+                    '                        <marker type="Circle" size="6"/>' +
+                    '                    </marker_settings>' +
+                    '                    <tooltip_settings enabled="True"/>' +
+                    '                </area_series>' +
+                    '            </data_plot_settings>' +
+                    '            <data>' +
+                    '                <series name="Series 1">' +
+                    '                    <point name="P1" y="162"/>' +
+                    '                    <point name="P2" y="134"/>' +
+                    '                    <point name="P3" y="116"/>' +
+                    '                    <point name="P4" y="122"/>' +
+                    '                    <point name="P5" y="178"/>' +
+                    '                    <point name="P6" y="144"/>' +
+                    '                    <point name="P7" y="125"/>' +
+                    '                    <point name="P8" y="176"/>' +
+                    '                    <point name="P9" y="156"/>' +
+                    '                    <point name="P10" y="195"/>' +
+                    '                    <point name="P11" y="215"/>' +
+                    '                    <point name="P12" y="176"/>' +
+                    '                    <point name="P13" y="167"/>' +
+                    '                    <point name="P14" y="142"/>' +
+                    '                    <point name="P15" y="117"/>' +
+                    '                    <point name="P16" y="113"/>' +
+                    '                    <point name="P17" y="132"/>' +
+                    '                    <point name="P18" y="146"/>' +
+                    '                    <point name="P19" y="169"/>' +
+                    '                    <point name="P20" y="184"/>' +
+                    '                </series>' +
+                    '                <series name="Series 2" color="#EEEE25">' +
+                    '                    <point name="P1" y="42"/>' +
+                    '                    <point name="P2" y="54"/>' +
+                    '                    <point name="P3" y="26"/>' +
+                    '                    <point name="P4" y="32"/>' +
+                    '                    <point name="P5" y="68"/>' +
+                    '                    <point name="P6" y="54"/>' +
+                    '                    <point name="P7" y="35"/>' +
+                    '                    <point name="P8" y="66"/>' +
+                    '                    <point name="P9" y="Missing"/>' +
+                    '                    <point name="P10" y="120"/>' +
+                    '                    <point name="P11" y="115"/>' +
+                    '                    <point name="P12" y="36"/>' +
+                    '                    <point name="P13" y="47"/>' +
+                    '                    <point name="P14" y="72"/>' +
+                    '                    <point name="P15" y="37"/>' +
+                    '                    <point name="P16" y="23"/>' +
+                    '                    <point name="P17" y="Missing"/>' +
+                    '                    <point name="P18" y="46"/>' +
+                    '                    <point name="P19" y="59"/>' +
+                    '                    <point name="P20" y="44"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf);
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

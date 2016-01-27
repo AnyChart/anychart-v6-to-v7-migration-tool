@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <charts>' +
+                    '        <chart plot_type="HeatMap">' +
+                    '            <data_plot_settings>' +
+                    '                <heat_map>' +
+                    '                    <heat_map_style>' +
+                    '                        <fill type="Solid" color="White" opacity="0"/>' +
+                    '                        <border enabled="false"/>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <fill color="%Color" opacity="0.2"/>' +
+                    '                            </hover>' +
+                    '                        </states>' +
+                    '                    </heat_map_style>' +
+                    '                    <tooltip_settings enabled="true">' +
+                    '                        <position valign="Top" halign="Right"/>' +
+                    '                        <format><![CDATA[State: {%Row}' +
+                    'Year: {%Column}{enabled:false}' +
+                    'Sales: ${%YValue}{numDecimals:0}]]></format>' +
+                    '                        <font bold="false"/>' +
+                    '                        <background>' +
+                    '                            <corners type="Rounded" all="3"/>' +
+                    '                            <border type="Solid" color="DarkColor(%Color)" thickness="2"/>' +
+                    '                        </background>' +
+                    '                    </tooltip_settings>' +
+                    '                    <label_settings enabled="true">' +
+                    '                        <position anchor="CenterLeft" valign="Center" halign="Right" padding="30"/>' +
+                    '                        <format>${%Value}{numDecimals:0}</format>' +
+                    '                        <font bold="false" color="Black"/>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <font bold="false" underline="true"/>' +
+                    '                            </hover>' +
+                    '                        </states>' +
+                    '                    </label_settings>' +
+                    '                    <marker_settings enabled="true">' +
+                    '                        <effects enabled="true">' +
+                    '                            <bevel enabled="true" distance="1" highlight_opacity="0.3" shadow_opacity="0.3"/>' +
+                    '                        </effects>' +
+                    '                        <marker type="%MarkerType" anchor="CenterLeft" size="6" v_align="Center" h_align="Right"' +
+                    '                                padding="14">' +
+                    '                        </marker>' +
+                    '                    </marker_settings>' +
+                    '                </heat_map>' +
+                    '            </data_plot_settings>' +
+                    '            <chart_settings>' +
+                    '                <axes>' +
+                    '                    <x_axis>' +
+                    '                        <title enabled="false"/>' +
+                    '                        <labels>' +
+                    '                            <font bold="true"/>' +
+                    '                        </labels>' +
+                    '                    </x_axis>' +
+                    '                    <y_axis>' +
+                    '                        <title enabled="false"/>' +
+                    '                        <major_grid>' +
+                    '                            <interlaced_fills>' +
+                    '                                <even>' +
+                    '                                    <fill color="Rgb(230,230,230)"/>' +
+                    '                                </even>' +
+                    '                            </interlaced_fills>' +
+                    '                        </major_grid>' +
+                    '                    </y_axis>' +
+                    '                </axes>' +
+                    '                <legend enabled="true" ignore_auto_item="True" rows_padding="2" position="Top" align="Center">' +
+                    '                    <format>{%Icon} {%RangeMin}{numDecimals:0} - {%RangeMax}{numDecimals:0}</format>' +
+                    '                    <title enabled="False"/>' +
+                    '                    <items>' +
+                    '                        <item source="Thresholds"/>' +
+                    '                    </items>' +
+                    '                </legend>' +
+                    '                <title>' +
+                    '                    <text>Sales By State (Heat-Map Chart)</text>' +
+                    '                </title>' +
+                    '            </chart_settings>' +
+                    '            <palettes>' +
+                    '                <palette name="custom" type="ColorRange" color_count="3">' +
+                    '                    <gradient>' +
+                    '                        <key color="Red"/>' +
+                    '                        <key color="Yellow"/>' +
+                    '                        <key color="Green"/>' +
+                    '                    </gradient>' +
+                    '                </palette>' +
+                    '            </palettes>' +
+                    '            <thresholds>' +
+                    '                <threshold name="autoTr" type="EqualSteps" range_count="3" palette="custom"/>' +
+                    '            </thresholds>' +
+                    '            <data>' +
+                    '                <series threshold="autoTr">' +
+                    '                    <point row="New York" column="2005" y="176232"/>' +
+                    '                    <point row="California" column="2005" y="216131"/>' +
+                    '                    <point row="Alabama" column="2005" y="142124"/>' +
+                    '                    <point row="Texas" column="2005" y="183272"/>' +
+                    '                    <point row="Nevada" column="2005" y="76231"/>' +
+                    '                    <point row="Washington" column="2005" y="122884"/>' +
+                    '                    <point row="Ohio" column="2005" y="236232"/>' +
+                    '                    <point row="Montana" column="2005" y="258711"/>' +
+                    '                    <point row="Mayne" column="2005" y="76238"/>' +
+                    '                    <point row="New York" column="2006" y="291238"/>' +
+                    '                    <point row="California" column="2006" y="181873"/>' +
+                    '                    <point row="Alabama" column="2006" y="245621"/>' +
+                    '                    <point row="Texas" column="2006" y="218766"/>' +
+                    '                    <point row="Nevada" column="2006" y="271873"/>' +
+                    '                    <point row="Washington" column="2006" y="216171"/>' +
+                    '                    <point row="Ohio" column="2006" y="278765"/>' +
+                    '                    <point row="Montana" column="2006" y="86122"/>' +
+                    '                    <point row="Mayne" column="2006" y="238768"/>' +
+                    '                    <point row="New York" column="2007" y="223527"/>' +
+                    '                    <point row="California" column="2007" y="185432"/>' +
+                    '                    <point row="Alabama" column="2007" y="194564"/>' +
+                    '                    <point row="Texas" column="2007" y="283427"/>' +
+                    '                    <point row="Nevada" column="2007" y="162332"/>' +
+                    '                    <point row="Washington" column="2007" y="187323"/>' +
+                    '                    <point row="Ohio" column="2007" y="99335"/>' +
+                    '                    <point row="Montana" column="2007" y="111243"/>' +
+                    '                    <point row="Mayne" column="2007" y="242328"/>' +
+                    '                    <point row="New York" column="2008" y="152316"/>' +
+                    '                    <point row="California" column="2008" y="212312"/>' +
+                    '                    <point row="Alabama" column="2008" y="231426"/>' +
+                    '                    <point row="Texas" column="2008" y="162232"/>' +
+                    '                    <point row="Nevada" column="2008" y="41247"/>' +
+                    '                    <point row="Washington" column="2008" y="241251"/>' +
+                    '                    <point row="Ohio" column="2008" y="285125"/>' +
+                    '                    <point row="Montana" column="2008" y="94523"/>' +
+                    '                    <point row="Mayne" column="2008" y="42531"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf, 'single');
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

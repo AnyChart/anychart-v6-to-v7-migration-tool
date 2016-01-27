@@ -1,0 +1,440 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <charts>' +
+                    '        <chart plot_type="Polar">' +
+                    '            <chart_settings>' +
+                    '                <title enabled="false"/>' +
+                    '                <axes>' +
+                    '                    <y_axis>' +
+                    '                        <major_grid interlaced="true"/>' +
+                    '                    </y_axis>' +
+                    '                    <x_axis>' +
+                    '                        <scale minimum="0" maximum="360" major_interval="15"/>' +
+                    '                        <labels padding="2">' +
+                    '                            <font bold="false"/>' +
+                    '                            <format><![CDATA[{%Value}{numDecimals:0}°]]></format>' +
+                    '                        </labels>' +
+                    '                    </x_axis>' +
+                    '                </axes>' +
+                    '                <legend enabled="true">' +
+                    '                    <title enabled="false"/>' +
+                    '                </legend>' +
+                    '            </chart_settings>' +
+                    '            <data_plot_settings>' +
+                    '                <polar display_data_mode="UnderAxes">' +
+                    '                    <background>' +
+                    '                        <fill type="Solid" color="#FFFFFF"/>' +
+                    '                        <border enabled="false"/>' +
+                    '                    </background>' +
+                    '                </polar>' +
+                    '            </data_plot_settings>' +
+                    '            <styles>' +
+                    '                <area_style name="idAreaStyle">' +
+                    '                    <fill opacity="0.3"/>' +
+                    '                    <line thickness="2"/>' +
+                    '                </area_style>' +
+                    '                <tooltip_style name="idTooltipStyle">' +
+                    '                    <format>' +
+                    '                        <![CDATA[Angle: {%XValue}{numDecimals:2} Value: {%YValue}{numDecimals:4,trailingZeros:false}]]></format>' +
+                    '                </tooltip_style>' +
+                    '            </styles>' +
+                    '            <data>' +
+                    '                <series name="Series A" type="Area" close_contour="true" style="idAreaStyle">' +
+                    '                    <marker enabled="false"/>' +
+                    '                    <tooltip enabled="true" style="idTooltipStyle"/>' +
+                    '                    <point x="0" y="14.582"/>' +
+                    '                    <point x="2" y="15.24"/>' +
+                    '                    <point x="4" y="16.169"/>' +
+                    '                    <point x="6" y="17.44"/>' +
+                    '                    <point x="8" y="19.101"/>' +
+                    '                    <point x="10" y="20.997"/>' +
+                    '                    <point x="12" y="21.462"/>' +
+                    '                    <point x="14" y="20.279"/>' +
+                    '                    <point x="16" y="18.077"/>' +
+                    '                    <point x="18" y="15.902"/>' +
+                    '                    <point x="20" y="14.157"/>' +
+                    '                    <point x="22" y="12.847"/>' +
+                    '                    <point x="24" y="11.761"/>' +
+                    '                    <point x="26" y="10.786"/>' +
+                    '                    <point x="28" y="9.955"/>' +
+                    '                    <point x="30" y="9.341"/>' +
+                    '                    <point x="32" y="8.935"/>' +
+                    '                    <point x="34" y="8.636"/>' +
+                    '                    <point x="36" y="8.323"/>' +
+                    '                    <point x="38" y="8.025"/>' +
+                    '                    <point x="40" y="7.843"/>' +
+                    '                    <point x="42" y="7.874"/>' +
+                    '                    <point x="44" y="7.985"/>' +
+                    '                    <point x="46" y="8.089"/>' +
+                    '                    <point x="48" y="8.163"/>' +
+                    '                    <point x="50" y="8.257"/>' +
+                    '                    <point x="52" y="8.455"/>' +
+                    '                    <point x="54" y="8.657"/>' +
+                    '                    <point x="56" y="8.84"/>' +
+                    '                    <point x="58" y="9.024"/>' +
+                    '                    <point x="60" y="9.238"/>' +
+                    '                    <point x="62" y="9.636"/>' +
+                    '                    <point x="64" y="10.072"/>' +
+                    '                    <point x="66" y="10.54"/>' +
+                    '                    <point x="68" y="11.04"/>' +
+                    '                    <point x="70" y="11.57"/>' +
+                    '                    <point x="72" y="12.369"/>' +
+                    '                    <point x="74" y="13.233"/>' +
+                    '                    <point x="76" y="14.035"/>' +
+                    '                    <point x="78" y="14.61"/>' +
+                    '                    <point x="80" y="14.885"/>' +
+                    '                    <point x="82" y="14.991"/>' +
+                    '                    <point x="84" y="14.788"/>' +
+                    '                    <point x="86" y="14.206"/>' +
+                    '                    <point x="88" y="13.393"/>' +
+                    '                    <point x="90" y="12.613"/>' +
+                    '                    <point x="92" y="11.921"/>' +
+                    '                    <point x="94" y="11.291"/>' +
+                    '                    <point x="96" y="10.624"/>' +
+                    '                    <point x="98" y="9.938"/>' +
+                    '                    <point x="100" y="9.394"/>' +
+                    '                    <point x="102" y="8.979"/>' +
+                    '                    <point x="104" y="8.728"/>' +
+                    '                    <point x="106" y="8.582"/>' +
+                    '                    <point x="108" y="8.515"/>' +
+                    '                    <point x="110" y="8.581"/>' +
+                    '                    <point x="112" y="8.502"/>' +
+                    '                    <point x="114" y="8.534"/>' +
+                    '                    <point x="116" y="8.656"/>' +
+                    '                    <point x="118" y="8.833"/>' +
+                    '                    <point x="120" y="9.034"/>' +
+                    '                    <point x="122" y="8.861"/>' +
+                    '                    <point x="124" y="8.657"/>' +
+                    '                    <point x="126" y="8.369"/>' +
+                    '                    <point x="128" y="7.982"/>' +
+                    '                    <point x="130" y="7.514"/>' +
+                    '                    <point x="132" y="7.173"/>' +
+                    '                    <point x="134" y="6.778"/>' +
+                    '                    <point x="136" y="6.339"/>' +
+                    '                    <point x="138" y="5.873"/>' +
+                    '                    <point x="140" y="5.402"/>' +
+                    '                    <point x="142" y="4.999"/>' +
+                    '                    <point x="144" y="4.597"/>' +
+                    '                    <point x="146" y="4.221"/>' +
+                    '                    <point x="148" y="3.876"/>' +
+                    '                    <point x="150" y="3.55"/>' +
+                    '                    <point x="152" y="3.266"/>' +
+                    '                    <point x="154" y="2.997"/>' +
+                    '                    <point x="156" y="2.745"/>' +
+                    '                    <point x="158" y="2.514"/>' +
+                    '                    <point x="160" y="2.299"/>' +
+                    '                    <point x="162" y="2.206"/>' +
+                    '                    <point x="164" y="2.111"/>' +
+                    '                    <point x="166" y="2.071"/>' +
+                    '                    <point x="168" y="2.075"/>' +
+                    '                    <point x="170" y="2.058"/>' +
+                    '                    <point x="172" y="2.11"/>' +
+                    '                    <point x="174" y="2.118"/>' +
+                    '                    <point x="176" y="2.131"/>' +
+                    '                    <point x="178" y="2.135"/>' +
+                    '                    <point x="180" y="2.073"/>' +
+                    '                    <point x="182" y="2.054"/>' +
+                    '                    <point x="184" y="1.976"/>' +
+                    '                    <point x="186" y="1.837"/>' +
+                    '                    <point x="188" y="1.64"/>' +
+                    '                    <point x="190" y="1.415"/>' +
+                    '                    <point x="192" y="1.223"/>' +
+                    '                    <point x="194" y="1.031"/>' +
+                    '                    <point x="196" y="0.793"/>' +
+                    '                    <point x="198" y="0.516"/>' +
+                    '                    <point x="200" y="0.281"/>' +
+                    '                    <point x="202" y="0.126"/>' +
+                    '                    <point x="204" y="0.027"/>' +
+                    '                    <point x="206" y="0.018"/>' +
+                    '                    <point x="208" y="0.099"/>' +
+                    '                    <point x="210" y="0.245"/>' +
+                    '                    <point x="212" y="0.551"/>' +
+                    '                    <point x="214" y="0.913"/>' +
+                    '                    <point x="216" y="1.321"/>' +
+                    '                    <point x="218" y="1.754"/>' +
+                    '                    <point x="220" y="2.184"/>' +
+                    '                    <point x="222" y="2.522"/>' +
+                    '                    <point x="224" y="2.83"/>' +
+                    '                    <point x="226" y="3.104"/>' +
+                    '                    <point x="228" y="3.311"/>' +
+                    '                    <point x="230" y="3.399"/>' +
+                    '                    <point x="232" y="3.403"/>' +
+                    '                    <point x="234" y="3.288"/>' +
+                    '                    <point x="236" y="3.128"/>' +
+                    '                    <point x="238" y="2.945"/>' +
+                    '                    <point x="240" y="2.697"/>' +
+                    '                    <point x="242" y="2.529"/>' +
+                    '                    <point x="244" y="2.321"/>' +
+                    '                    <point x="246" y="2.137"/>' +
+                    '                    <point x="248" y="1.99"/>' +
+                    '                    <point x="250" y="1.844"/>' +
+                    '                    <point x="252" y="1.787"/>' +
+                    '                    <point x="254" y="1.732"/>' +
+                    '                    <point x="256" y="1.747"/>' +
+                    '                    <point x="258" y="1.838"/>' +
+                    '                    <point x="260" y="1.945"/>' +
+                    '                    <point x="262" y="2.032"/>' +
+                    '                    <point x="264" y="2.15"/>' +
+                    '                    <point x="266" y="2.318"/>' +
+                    '                    <point x="268" y="2.534"/>' +
+                    '                    <point x="270" y="2.78"/>' +
+                    '                    <point x="272" y="3"/>' +
+                    '                    <point x="274" y="3.257"/>' +
+                    '                    <point x="276" y="3.564"/>' +
+                    '                    <point x="278" y="3.92"/>' +
+                    '                    <point x="280" y="4.304"/>' +
+                    '                    <point x="282" y="4.748"/>' +
+                    '                    <point x="284" y="5.221"/>' +
+                    '                    <point x="286" y="5.773"/>' +
+                    '                    <point x="288" y="6.401"/>' +
+                    '                    <point x="290" y="7.034"/>' +
+                    '                    <point x="292" y="7.649"/>' +
+                    '                    <point x="294" y="8.268"/>' +
+                    '                    <point x="296" y="8.737"/>' +
+                    '                    <point x="298" y="9.048"/>' +
+                    '                    <point x="300" y="9.369"/>' +
+                    '                    <point x="302" y="9.83"/>' +
+                    '                    <point x="304" y="10.348"/>' +
+                    '                    <point x="306" y="10.871"/>' +
+                    '                    <point x="308" y="11.409"/>' +
+                    '                    <point x="310" y="12.052"/>' +
+                    '                    <point x="312" y="12.984"/>' +
+                    '                    <point x="314" y="14.11"/>' +
+                    '                    <point x="316" y="15.32"/>' +
+                    '                    <point x="318" y="16.582"/>' +
+                    '                    <point x="320" y="18.017"/>' +
+                    '                    <point x="322" y="19.861"/>' +
+                    '                    <point x="324" y="22.274"/>' +
+                    '                    <point x="326" y="24.923"/>' +
+                    '                    <point x="328" y="26.94"/>' +
+                    '                    <point x="330" y="27.227"/>' +
+                    '                    <point x="332" y="25.166"/>' +
+                    '                    <point x="334" y="23.02"/>' +
+                    '                    <point x="336" y="21.075"/>' +
+                    '                    <point x="338" y="19.431"/>' +
+                    '                    <point x="340" y="18.164"/>' +
+                    '                    <point x="342" y="17.007"/>' +
+                    '                    <point x="344" y="16.099"/>' +
+                    '                    <point x="346" y="15.357"/>' +
+                    '                    <point x="348" y="14.742"/>' +
+                    '                    <point x="350" y="14.287"/>' +
+                    '                    <point x="352" y="13.93"/>' +
+                    '                    <point x="354" y="13.737"/>' +
+                    '                    <point x="356" y="13.783"/>' +
+                    '                    <point x="358" y="14.084"/>' +
+                    '                </series>' +
+                    '                <series name="Series B" type="Area" close_contour="true" style="idAreaStyle">' +
+                    '                    <marker enabled="false"/>' +
+                    '                    <tooltip enabled="true" style="idTooltipStyle"/>' +
+                    '                    <point x="0" y="-14.582"/>' +
+                    '                    <point x="2" y="-15.24"/>' +
+                    '                    <point x="4" y="-16.169"/>' +
+                    '                    <point x="6" y="-17.44"/>' +
+                    '                    <point x="8" y="-19.101"/>' +
+                    '                    <point x="10" y="-20.997"/>' +
+                    '                    <point x="12" y="-21.462"/>' +
+                    '                    <point x="14" y="-20.279"/>' +
+                    '                    <point x="16" y="-18.077"/>' +
+                    '                    <point x="18" y="-15.902"/>' +
+                    '                    <point x="20" y="-14.157"/>' +
+                    '                    <point x="22" y="-12.847"/>' +
+                    '                    <point x="24" y="-11.761"/>' +
+                    '                    <point x="26" y="-10.786"/>' +
+                    '                    <point x="28" y="-9.955"/>' +
+                    '                    <point x="30" y="-9.341"/>' +
+                    '                    <point x="32" y="-8.935"/>' +
+                    '                    <point x="34" y="-8.636"/>' +
+                    '                    <point x="36" y="-8.323"/>' +
+                    '                    <point x="38" y="-8.025"/>' +
+                    '                    <point x="40" y="-7.843"/>' +
+                    '                    <point x="42" y="-7.874"/>' +
+                    '                    <point x="44" y="-7.985"/>' +
+                    '                    <point x="46" y="-8.089"/>' +
+                    '                    <point x="48" y="-8.163"/>' +
+                    '                    <point x="50" y="-8.257"/>' +
+                    '                    <point x="52" y="-8.455"/>' +
+                    '                    <point x="54" y="-8.657"/>' +
+                    '                    <point x="56" y="-8.84"/>' +
+                    '                    <point x="58" y="-9.024"/>' +
+                    '                    <point x="60" y="-9.238"/>' +
+                    '                    <point x="62" y="-9.636"/>' +
+                    '                    <point x="64" y="-10.072"/>' +
+                    '                    <point x="66" y="-10.54"/>' +
+                    '                    <point x="68" y="-11.04"/>' +
+                    '                    <point x="70" y="-11.57"/>' +
+                    '                    <point x="72" y="-12.369"/>' +
+                    '                    <point x="74" y="-13.233"/>' +
+                    '                    <point x="76" y="-14.035"/>' +
+                    '                    <point x="78" y="-14.61"/>' +
+                    '                    <point x="80" y="-14.885"/>' +
+                    '                    <point x="82" y="-14.991"/>' +
+                    '                    <point x="84" y="-14.788"/>' +
+                    '                    <point x="86" y="-14.206"/>' +
+                    '                    <point x="88" y="-13.393"/>' +
+                    '                    <point x="90" y="-12.613"/>' +
+                    '                    <point x="92" y="-11.921"/>' +
+                    '                    <point x="94" y="-11.291"/>' +
+                    '                    <point x="96" y="-10.624"/>' +
+                    '                    <point x="98" y="-9.938"/>' +
+                    '                    <point x="100" y="-9.394"/>' +
+                    '                    <point x="102" y="-8.979"/>' +
+                    '                    <point x="104" y="-8.728"/>' +
+                    '                    <point x="106" y="-8.582"/>' +
+                    '                    <point x="108" y="-8.515"/>' +
+                    '                    <point x="110" y="-8.581"/>' +
+                    '                    <point x="112" y="-8.502"/>' +
+                    '                    <point x="114" y="-8.534"/>' +
+                    '                    <point x="116" y="-8.656"/>' +
+                    '                    <point x="118" y="-8.833"/>' +
+                    '                    <point x="120" y="-9.034"/>' +
+                    '                    <point x="122" y="-8.861"/>' +
+                    '                    <point x="124" y="-8.657"/>' +
+                    '                    <point x="126" y="-8.369"/>' +
+                    '                    <point x="128" y="-7.982"/>' +
+                    '                    <point x="130" y="-7.514"/>' +
+                    '                    <point x="132" y="-7.173"/>' +
+                    '                    <point x="134" y="-6.778"/>' +
+                    '                    <point x="136" y="-6.339"/>' +
+                    '                    <point x="138" y="-5.873"/>' +
+                    '                    <point x="140" y="-5.402"/>' +
+                    '                    <point x="142" y="-4.999"/>' +
+                    '                    <point x="144" y="-4.597"/>' +
+                    '                    <point x="146" y="-4.221"/>' +
+                    '                    <point x="148" y="-3.876"/>' +
+                    '                    <point x="150" y="-3.55"/>' +
+                    '                    <point x="152" y="-3.266"/>' +
+                    '                    <point x="154" y="-2.997"/>' +
+                    '                    <point x="156" y="-2.745"/>' +
+                    '                    <point x="158" y="-2.514"/>' +
+                    '                    <point x="160" y="-2.299"/>' +
+                    '                    <point x="162" y="-2.206"/>' +
+                    '                    <point x="164" y="-2.111"/>' +
+                    '                    <point x="166" y="-2.071"/>' +
+                    '                    <point x="168" y="-2.075"/>' +
+                    '                    <point x="170" y="-2.058"/>' +
+                    '                    <point x="172" y="-2.11"/>' +
+                    '                    <point x="174" y="-2.118"/>' +
+                    '                    <point x="176" y="-2.131"/>' +
+                    '                    <point x="178" y="-2.135"/>' +
+                    '                    <point x="180" y="-2.073"/>' +
+                    '                    <point x="182" y="-2.054"/>' +
+                    '                    <point x="184" y="-1.976"/>' +
+                    '                    <point x="186" y="-1.837"/>' +
+                    '                    <point x="188" y="-1.64"/>' +
+                    '                    <point x="190" y="-1.415"/>' +
+                    '                    <point x="192" y="-1.223"/>' +
+                    '                    <point x="194" y="-1.031"/>' +
+                    '                    <point x="196" y="-0.793"/>' +
+                    '                    <point x="198" y="-0.516"/>' +
+                    '                    <point x="200" y="-0.281"/>' +
+                    '                    <point x="202" y="-0.126"/>' +
+                    '                    <point x="204" y="-0.027"/>' +
+                    '                    <point x="206" y="-0.018"/>' +
+                    '                    <point x="208" y="-0.099"/>' +
+                    '                    <point x="210" y="-0.245"/>' +
+                    '                    <point x="212" y="-0.551"/>' +
+                    '                    <point x="214" y="-0.913"/>' +
+                    '                    <point x="216" y="-1.321"/>' +
+                    '                    <point x="218" y="-1.754"/>' +
+                    '                    <point x="220" y="-2.184"/>' +
+                    '                    <point x="222" y="-2.522"/>' +
+                    '                    <point x="224" y="-2.83"/>' +
+                    '                    <point x="226" y="-3.104"/>' +
+                    '                    <point x="228" y="-3.311"/>' +
+                    '                    <point x="230" y="-3.399"/>' +
+                    '                    <point x="232" y="-3.403"/>' +
+                    '                    <point x="234" y="-3.288"/>' +
+                    '                    <point x="236" y="-3.128"/>' +
+                    '                    <point x="238" y="-2.945"/>' +
+                    '                    <point x="240" y="-2.697"/>' +
+                    '                    <point x="242" y="-2.529"/>' +
+                    '                    <point x="244" y="-2.321"/>' +
+                    '                    <point x="246" y="-2.137"/>' +
+                    '                    <point x="248" y="-1.99"/>' +
+                    '                    <point x="250" y="-1.844"/>' +
+                    '                    <point x="252" y="-1.787"/>' +
+                    '                    <point x="254" y="-1.732"/>' +
+                    '                    <point x="256" y="-1.747"/>' +
+                    '                    <point x="258" y="-1.838"/>' +
+                    '                    <point x="260" y="-1.945"/>' +
+                    '                    <point x="262" y="-2.032"/>' +
+                    '                    <point x="264" y="-2.15"/>' +
+                    '                    <point x="266" y="-2.318"/>' +
+                    '                    <point x="268" y="-2.534"/>' +
+                    '                    <point x="270" y="-2.78"/>' +
+                    '                    <point x="272" y="-3"/>' +
+                    '                    <point x="274" y="-3.257"/>' +
+                    '                    <point x="276" y="-3.564"/>' +
+                    '                    <point x="278" y="-3.92"/>' +
+                    '                    <point x="280" y="-4.304"/>' +
+                    '                    <point x="282" y="-4.748"/>' +
+                    '                    <point x="284" y="-5.221"/>' +
+                    '                    <point x="286" y="-5.773"/>' +
+                    '                    <point x="288" y="-6.401"/>' +
+                    '                    <point x="290" y="-7.034"/>' +
+                    '                    <point x="292" y="-7.649"/>' +
+                    '                    <point x="294" y="-8.268"/>' +
+                    '                    <point x="296" y="-8.737"/>' +
+                    '                    <point x="298" y="-9.048"/>' +
+                    '                    <point x="300" y="-9.369"/>' +
+                    '                    <point x="302" y="-9.83"/>' +
+                    '                    <point x="304" y="-10.348"/>' +
+                    '                    <point x="306" y="-10.871"/>' +
+                    '                    <point x="308" y="-11.409"/>' +
+                    '                    <point x="310" y="-12.052"/>' +
+                    '                    <point x="312" y="-12.984"/>' +
+                    '                    <point x="314" y="-14.11"/>' +
+                    '                    <point x="316" y="-15.32"/>' +
+                    '                    <point x="318" y="-16.582"/>' +
+                    '                    <point x="320" y="-18.017"/>' +
+                    '                    <point x="322" y="-19.861"/>' +
+                    '                    <point x="324" y="-22.274"/>' +
+                    '                    <point x="326" y="-24.923"/>' +
+                    '                    <point x="328" y="-26.94"/>' +
+                    '                    <point x="330" y="-27.227"/>' +
+                    '                    <point x="332" y="-25.166"/>' +
+                    '                    <point x="334" y="-23.02"/>' +
+                    '                    <point x="336" y="-21.075"/>' +
+                    '                    <point x="338" y="-19.431"/>' +
+                    '                    <point x="340" y="-18.164"/>' +
+                    '                    <point x="342" y="-17.007"/>' +
+                    '                    <point x="344" y="-16.099"/>' +
+                    '                    <point x="346" y="-15.357"/>' +
+                    '                    <point x="348" y="-14.742"/>' +
+                    '                    <point x="350" y="-14.287"/>' +
+                    '                    <point x="352" y="-13.93"/>' +
+                    '                    <point x="354" y="-13.737"/>' +
+                    '                    <point x="356" y="-13.783"/>' +
+                    '                    <point x="358" y="-14.084"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf);
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <settings>' +
+                    '        <animation enabled="True"/>' +
+                    '    </settings>' +
+                    '    <charts>' +
+                    '        <chart plot_type="Funnel">' +
+                    '            <chart_settings>' +
+                    '                <title enabled="true" align_by="Chart">' +
+                    '                    <text>Sales By Product (2D Funnel Chart)</text>' +
+                    '                </title>' +
+                    '                <data_plot_background enabled="false">' +
+                    '                    <inside_margin all="10"/>' +
+                    '                </data_plot_background>' +
+                    '            </chart_settings>' +
+                    '            <data_plot_settings enable_3d_mode="false">' +
+                    '                <funnel_series inverted="false" neck_height="0.25" fit_aspect="0.8 " min_width="0.2" padding="0"' +
+                    '                               mode="Circular">' +
+                    '                    <animation enabled="true" start_time="0.3" type="ScaleXCenter" duration="2" show_mode="Smoothed"' +
+                    '                               interpolation_type="Cubic" animate_opacity="true"/>' +
+                    '                    <connector enabled="true" color="Black" opacity="0.5"/>' +
+                    '                    <label_settings enabled="true">' +
+                    '                        <animation enabled="true" start_time="0.3" type="ScaleXCenter" duration="2" show_mode="Smoothed"' +
+                    '                                   interpolation_type="Cubic" animate_opacity="true"/>' +
+                    '                        <position padding="20"/>' +
+                    '                        <format>{%Name}, ${%Value}{numDecimals:0}</format>' +
+                    '                        <font bold="true"/>' +
+                    '                    </label_settings>' +
+                    '                    <tooltip_settings enabled="true">' +
+                    '                        <format>' +
+                    '                            Product: {%Name}' +
+                    '                            Sales: ${%Value}{numDecimals:0}' +
+                    '                            Ptc. of Total: {%YPercentOfTotal}{numDecimals:1}%' +
+                    '                        </format>' +
+                    '                        <background>' +
+                    '                            <corners type="Rounded" all="3"/>' +
+                    '                        </background>' +
+                    '                        <font bold="false"/>' +
+                    '                    </tooltip_settings>' +
+                    '                    <funnel_style>' +
+                    '                        <border color="Black" opacity="0.05"/>' +
+                    '                        <fill type="Gradient">' +
+                    '                            <gradient angle="0">' +
+                    '                                <key color="Blend(%Color,DarkColor(%Color),0.2)"/>' +
+                    '                                <key color="%Color"/>' +
+                    '                                <key color="Blend(%Color,DarkColor(%Color),0.2)"/>' +
+                    '                            </gradient>' +
+                    '                        </fill>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <hatch_fill enabled="true" type="Percent50" color="White" opacity="0.3"/>' +
+                    '                            </hover>' +
+                    '                            <selected_hover>' +
+                    '                                <hatch_fill type="Checkerboard" color="#404040" opacity="0.1"/>' +
+                    '                            </selected_hover>' +
+                    '                            <selected_normal>' +
+                    '                                <hatch_fill type="Checkerboard" color="Black" opacity="0.1"/>' +
+                    '                            </selected_normal>' +
+                    '                        </states>' +
+                    '                    </funnel_style>' +
+                    '                    <marker_settings enabled="true">' +
+                    '                        <marker type="None" anchor="Center" v_align="Center" h_align="Center" size="12"/>' +
+                    '                        <fill color="Yellow"/>' +
+                    '                        <border color="DarkColor(Yellow)"/>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <marker type="Star5"/>' +
+                    '                            </hover>' +
+                    '                            <pushed>' +
+                    '                                <marker type="Star5" size="8"/>' +
+                    '                            </pushed>' +
+                    '                            <selected_hover>' +
+                    '                                <marker type="Star5" size="14"/>' +
+                    '                            </selected_hover>' +
+                    '                            <selected_normal>' +
+                    '                                <marker type="Star5"/>' +
+                    '                            </selected_normal>' +
+                    '                        </states>' +
+                    '                    </marker_settings>' +
+                    '                    <effects enabled="true">' +
+                    '                        <drop_shadow enabled="true" color="Black" distance="3" opacity="0.4" blur_x="5" blur_y="5"/>' +
+                    '                    </effects>' +
+                    '                </funnel_series>' +
+                    '            </data_plot_settings>' +
+                    '            <data>' +
+                    '                <series>' +
+                    '                    <point name="Product A" y="7522"/>' +
+                    '                    <point name="Product B" y="2431"/>' +
+                    '                    <point name="Product C" y="3624"/>' +
+                    '                    <point name="Product D" y="5243"/>' +
+                    '                    <point name="Product E" y="6813"/>' +
+                    '                    <point name="Product F" y="5321"/>' +
+                    '                    <point name="Product G" y="1567"/>' +
+                    '                    <point name="Product H" y="3876"/>' +
+                    '                    <point name="Product I" y="2187"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf, 'single');
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

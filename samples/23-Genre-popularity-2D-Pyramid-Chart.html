@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        #container {
+            border: 1px solid;
+            width: 800px;
+            height: 600px;
+        }
+    </style>
+    <!--Non Compiled JS-->
+    <script src="https://cdn.anychart.com/js/latest/anychart-bundle.min.js"></script>
+    <script src="../src/migrationTool.js"></script>
+    <script>
+        anychart.onDocumentReady(function() {
+            var v6conf =
+                    '<anychart>' +
+                    '    <settings>' +
+                    '        <animation enabled="true"/>' +
+                    '    </settings>' +
+                    '    <charts>' +
+                    '        <chart name="Main" plot_type="Funnel">' +
+                    '            <chart_settings>' +
+                    '                <title enabled="true">' +
+                    '                    <text>Genre popularity (2D Pyramid Chart)</text>' +
+                    '                </title>' +
+                    '                <data_plot_background enabled="true">' +
+                    '                    <inside_margin all="15"/>' +
+                    '                </data_plot_background>' +
+                    '                <legend enabled="false" inside_dataplot="true" ignore_auto_item="true">' +
+                    '                    <title enabled="false"/>' +
+                    '                    <items>' +
+                    '                        <item source="Points"/>' +
+                    '                    </items>' +
+                    '                </legend>' +
+                    '            </chart_settings>' +
+                    '            <data_plot_settings>' +
+                    '                <funnel_series inverted="true" neck_height="0" min_width="0" padding="0" fit_aspect="0.9">' +
+                    '                    <animation enabled="true" start_time="0.3" duration="2" type="SideFromLeft" animate_opacity="false"' +
+                    '                               interpolation_type="Elastic" show_mode="Smoothed"/>' +
+                    '                    <connector enabled="true" color="Black" opacity="0.4"/>' +
+                    '                    <label_settings enabled="true" placement_mode="OutsideLeftInColumn" padding="20">' +
+                    '                        <animation enabled="true" start_time="0.3" duration="2" type="SideFromLeft"' +
+                    '                                   animate_opacity="false" interpolation_type="Elastic" show_mode="Smoothed"/>' +
+                    '                        <position anchor="center" padding="50"/>' +
+                    '                        <format>{%Name} - {%YValue}{numDecimals:0}</format>' +
+                    '                        <background enabled="true">' +
+                    '                            <inside_margin left="8" right="8"/>' +
+                    '                            <corners type="Rounded" all="3"/>' +
+                    '                        </background>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <background>' +
+                    '                                    <border type="Solid" color="DarkColor(%Color)" thickness="2"/>' +
+                    '                                </background>' +
+                    '                            </hover>' +
+                    '                            <pushed>' +
+                    '                                <background>' +
+                    '                                    <border type="Solid" color="#494949" thickness="2" opacity="0.7"/>' +
+                    '                                </background>' +
+                    '                            </pushed>' +
+                    '                            <selected_hover>' +
+                    '                                <background>' +
+                    '                                    <border type="Solid" color="DarkColor(%Color)" thickness="2" opacity="0.7"/>' +
+                    '                                </background>' +
+                    '                            </selected_hover>' +
+                    '                            <selected_normal>' +
+                    '                                <background>' +
+                    '                                    <border type="Solid" color="DarkColor(%Color)" thickness="2"/>' +
+                    '                                </background>' +
+                    '                            </selected_normal>' +
+                    '                        </states>' +
+                    '                    </label_settings>' +
+                    '                    <tooltip_settings enabled="true">' +
+                    '                        <format>' +
+                    '                            {%Name}' +
+                    '                            {%YValue}{numDecimals:0}' +
+                    '                        </format>' +
+                    '                        <background>' +
+                    '                            <corners type="Rounded" all="3"/>' +
+                    '                        </background>' +
+                    '                    </tooltip_settings>' +
+                    '                    <funnel_style>' +
+                    '                        <border color="Black" opacity="0.05"/>' +
+                    '                        <fill type="Gradient">' +
+                    '                            <gradient angle="0">' +
+                    '                                <key color="Blend(%Color,DarkColor(%Color),0.2)"/>' +
+                    '                                <key color="%Color"/>' +
+                    '                                <key color="Blend(%Color,DarkColor(%Color),0.2)"/>' +
+                    '                            </gradient>' +
+                    '                        </fill>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <hatch_fill enabled="true" type="Percent50" color="White" opacity="0.3"/>' +
+                    '                            </hover>' +
+                    '                            <selected_hover>' +
+                    '                                <hatch_fill type="Checkerboard" color="#404040" opacity="0.1"/>' +
+                    '                            </selected_hover>' +
+                    '                            <selected_normal>' +
+                    '                                <hatch_fill type="Checkerboard" color="Black" opacity="0.1"/>' +
+                    '                            </selected_normal>' +
+                    '                        </states>' +
+                    '                    </funnel_style>' +
+                    '                    <marker_settings enabled="true">' +
+                    '                        <marker type="None" anchor="Center" v_align="Center" h_align="Center" size="12"/>' +
+                    '                        <fill color="Yellow"/>' +
+                    '                        <border color="DarkColor(Yellow)"/>' +
+                    '                        <states>' +
+                    '                            <hover>' +
+                    '                                <marker type="Star5"/>' +
+                    '                            </hover>' +
+                    '                            <pushed>' +
+                    '                                <marker type="Star5" size="8"/>' +
+                    '                            </pushed>' +
+                    '                            <selected_hover>' +
+                    '                                <marker type="Star5" size="14"/>' +
+                    '                            </selected_hover>' +
+                    '                            <selected_normal>' +
+                    '                                <marker type="Star5"/>' +
+                    '                            </selected_normal>' +
+                    '                        </states>' +
+                    '                    </marker_settings>' +
+                    '                    <effects enabled="true">' +
+                    '                        <drop_shadow enabled="true" color="Black" distance="3" opacity="0.4" blur_x="5" blur_y="5"/>' +
+                    '                    </effects>' +
+                    '                </funnel_series>' +
+                    '            </data_plot_settings>' +
+                    '            <data>' +
+                    '                <series>' +
+                    '                    <point name="Fantasy" y="402676"/>' +
+                    '                    <point name="Fantastic" y="762124"/>' +
+                    '                    <point name="Detective" y="435321"/>' +
+                    '                    <point name="Classic" y="314982"/>' +
+                    '                    <point name="TextBooks" y="220187"/>' +
+                    '                </series>' +
+                    '            </data>' +
+                    '        </chart>' +
+                    '    </charts>' +
+                    '</anychart>';
+            var v7conf = anychart.migrationTool.transformXml(v6conf, 'single');
+            console.log(v7conf);
+            var chart = anychart.fromJson(v7conf);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>
