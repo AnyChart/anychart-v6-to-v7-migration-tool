@@ -37,7 +37,7 @@ In some ways everything stayed that same, you configure chart, load data and the
 
 * XML and JSON Configuration *
 
-If you want to stick with XML or JSON configs, but wish to update the scripts that generate them, please proceed to these articles: http://docs.anychart.com/latest/Working_with_Data/Data_From_XML and http://docs.anychart.com/latest/Working_with_Data/Data_From_JSON, XML and JSON schemas are available too.
+If you want to stick with XML or JSON configs, but wish to update the scripts that generate them, please proceed to these articles: http://docs.anychart.com/Working_with_Data/Data_From_XML and http://docs.anychart.com/Working_with_Data/Data_From_JSON, XML and JSON schemas are available too.
 
 * Migration Assistant Tool *
 
