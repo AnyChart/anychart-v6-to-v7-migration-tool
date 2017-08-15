@@ -1,4 +1,4 @@
-(function (window) {
+(function(window) {
     'use strict';
 
     /**
@@ -6,7 +6,7 @@
      * @param {*} value Variable to test.
      * @return {boolean} Whether variable is defined.
      */
-    var isDef = function (value) {
+    var isDef = function(value) {
         // void 0 always evaluates to undefined and hence we do not need to depend on
         // the definition of the global variable named 'undefined'.
         return value !== void 0;
@@ -17,7 +17,7 @@
      * @param {*} value Variable to test.
      * @return {boolean} Whether variable is null.
      */
-    var isNull = function (value) {
+    var isNull = function(value) {
         return value === null;
     };
 
@@ -26,7 +26,7 @@
      * @param {?} value Variable to test.
      * @return {boolean} Whether variable is a string.
      */
-    var isString = function (value) {
+    var isString = function(value) {
         return typeof value == 'string';
     };
 
@@ -35,7 +35,7 @@
      * @param {?} value Variable to test.
      * @return {boolean} Whether variable is an array.
      */
-    var isArray = function (value) {
+    var isArray = function(value) {
         return (typeof value == 'object' && value instanceof Array);
     };
 
@@ -44,7 +44,7 @@
      * @param {?} value Variable to test.
      * @return {boolean} Whether variable is an object.
      */
-    var isObject = function (value) {
+    var isObject = function(value) {
         var type = typeof value;
         return (type == 'object' && type != 'function' && value != null)
     };
@@ -54,7 +54,7 @@
      * @param {?} value Variable to test.
      * @return {boolean} Whether variable is a function.
      */
-    var isFunction = function (value) {
+    var isFunction = function(value) {
         return (typeof value == 'function' && (typeof value.call != 'undefined'));
     };
 
@@ -63,7 +63,7 @@
      * @param {string} str source string.
      * @return {string} trimmed string.
      */
-    var trim = function (str) {
+    var trim = function(str) {
         // Since IE doesn't include non-breaking-space (0xa0) in their \s character
         // class (as required by section 7.2 of the ECMAScript spec), we explicitly
         // include it in the regexp to enforce consistent cross-browser behavior.
@@ -77,8 +77,8 @@
      * @param {string} str The string in underscore_case form.
      * @return {string} The string in camelCase form.
      */
-    var toCamelCase = function (str) {
-        return str.replace(/_([0-9a-z])/g, function (match, p1) {
+    var toCamelCase = function(str) {
+        return str.replace(/_([0-9a-z])/g, function(match, p1) {
             return p1.toUpperCase();
         });
     };
@@ -88,8 +88,8 @@
      * @param {string} str String to unescape.
      * @return {string} Unescaped string.
      */
-    var unescapeString = function (str) {
-        return str.replace(/\\([0bfnrt"'\\]|x([0-9a-fA-F]{2})|u([0-9a-fA-F]{4}))/g, function (match, sym, hex, utf) {
+    var unescapeString = function(str) {
+        return str.replace(/\\([0bfnrt"'\\]|x([0-9a-fA-F]{2})|u([0-9a-fA-F]{4}))/g, function(match, sym, hex, utf) {
             var c = sym.charAt(0);
             switch (c) {
                 case '0':
@@ -119,9 +119,6 @@
     };
 
     var anychart = window.anychart = window.anychart || {};
-
-    anychart.server("http://" + window.location.hostname + ":2000");
-
     anychart.migrationTool = {};
 
     /**
@@ -131,7 +128,7 @@
      * @param {*} value Value to set.
      * @return {*} Modified object.
      */
-    anychart.migrationTool.setValueByPath = function (obj, path, value) {
+    anychart.migrationTool.setValueByPath = function(obj, path, value) {
         if (isString(path))
             path = path.split('.');
 
@@ -157,7 +154,7 @@
      * @param {string|Array.<string>} path Path to object property.
      * @return {*} Value of the property.
      */
-    anychart.migrationTool.getValueByPath = function (obj, path) {
+    anychart.migrationTool.getValueByPath = function(obj, path) {
         if (isString(path))
             path = path.split('.');
 
@@ -176,7 +173,7 @@
      * @param {Object} obj Object.
      * @param {Object.<string, string>|Function} transformationMapOrFunction Map of transformations
      */
-    anychart.migrationTool.transformAttributes = function (obj, transformationMapOrFunction) {
+    anychart.migrationTool.transformAttributes = function(obj, transformationMapOrFunction) {
         var keys = Object.keys(obj);
         for (var i = 0; i < keys.length; i++) {
             var key = keys[i];
@@ -194,7 +191,7 @@
         return obj;
     };
 
-    anychart.migrationTool.mixin = function (target, source) {
+    anychart.migrationTool.mixin = function(target, source) {
         for (var key in source) {
             target[key] = source[key];
         }
@@ -205,7 +202,7 @@
      * @param {string} name Node name.
      * @return {boolean} Allowed or not.
      */
-    var isNullNodeAllowed = function (name) {
+    var isNullNodeAllowed = function(name) {
         return name == 'point';
     };
 
@@ -233,7 +230,7 @@
      * @param {Node} node Node.
      * @return {?(Object|string)} JSON.
      */
-    var parseXML = function (node) {
+    var parseXML = function(node) {
         switch (node.nodeType) {
             case XMLNodeType.ELEMENT_NODE:
                 var result = {};
@@ -319,7 +316,7 @@
      * Creates an instance of the MSXML2.DOMDocument.
      * @return {Document} The new document.
      */
-    var createMsXmlDocument = function () {
+    var createMsXmlDocument = function() {
         var doc = new ActiveXObject('MSXML2.DOMDocument');
         if (doc) {
             // Prevent potential vulnerabilities exposed by MSXML2
@@ -346,7 +343,7 @@
      * @param {string} xml The text.
      * @return {Document} XML document from the text.
      */
-    var loadXml = function (xml) {
+    var loadXml = function(xml) {
         if (typeof DOMParser != 'undefined') {
             return new DOMParser().parseFromString(xml, 'application/xml');
         } else if (typeof ActiveXObject != 'undefined') {
@@ -357,13 +354,13 @@
         throw Error('Your browser does not support loading xml documents');
     };
 
-    var doTransforms = function (json, map) {
+    var doTransforms = function(json, map) {
         for (var i = 0; i < map.length; i++) {
             var trs = map[i];
-            if (!isArray(trs)) {
+            if (!isArray(trs))
                 applyTransform(trs, json);
-            } else {
-                trs.forEach(function (tr) {
+            else {
+                trs.forEach(function(tr) {
                     applyTransform(tr, json);
                 })
             }
@@ -379,16 +376,15 @@
      * which used for single-series chart (pie, funnel, heatmap) and null to drop default transformations.
      * transformations.
      */
-    anychart.migrationTool.transformXml = function (xmlOrXmlString, opt_type, opt_transformations) {
+    anychart.migrationTool.transformXml = function(xmlOrXmlString, opt_type, opt_transformations) {
         if (!isNull(opt_type))
             opt_type = opt_type || 'multi';
         opt_transformations = opt_transformations || [];
         var xml;
         if (isString(xmlOrXmlString)) {
             xml = loadXml(xmlOrXmlString);
-        } else {
+        } else
             xml = xmlOrXmlString;
-        }
 
         var json = parseXML(xml);
 
@@ -415,7 +411,7 @@
      * which used for single-series chart (pie, funnel, heatmap) and null to drop default transformations.
      * transformations.
      */
-    anychart.migrationTool.transformJson = function (jsonOrJsonString, opt_type, opt_transformations) {
+    anychart.migrationTool.transformJson = function(jsonOrJsonString, opt_type, opt_transformations) {
         if (!isNull(opt_type))
             opt_type = opt_type || 'multi';
         opt_transformations = opt_transformations || [];
@@ -440,7 +436,7 @@
         return json;
     };
 
-    var applyTransform = function (tr, json) {
+    var applyTransform = function(tr, json) {
         if (isFunction(tr))
             return tr(json);
         else if (isObject(tr)) {
@@ -458,7 +454,7 @@
      * @param {Object} json Json.
      * @return {Object} modified json.
      */
-    var moveProperty = function (tr, json) {
+    var moveProperty = function(tr, json) {
         var from = tr.from;
         var to = tr.to;
         var valueReplacer = tr.valueReplacer;
@@ -488,7 +484,7 @@
      * @param {Object} json Json.
      * @return {Object} modified json.
      */
-    var deleteProperty = function (tr, json) {
+    var deleteProperty = function(tr, json) {
         for (var i = 0; i < tr.targets.length; i++) {
             var target = tr.targets[i];
             var targetPath = target.split('.');
@@ -510,7 +506,7 @@
 
     // HELPER FUNCTIONS
 
-    anychart.migrationTool.camelCase = function (json) {
+    anychart.migrationTool.camelCase = function(json) {
         anychart.migrationTool.transformAttributes(json, toCamelCase);
         for (var i in json) {
             if (json.hasOwnProperty(i))
@@ -553,7 +549,7 @@
             action: 'move',
             from: 'charts.chart',
             to: 'chart',
-            valueReplacer: function (fromValue) {
+            valueReplacer: function(fromValue) {
                 if (isArray(fromValue))
                     fromValue = fromValue[0];
                 if (fromValue.type && !fromValue.plotType)
@@ -566,7 +562,7 @@
             from: 'settings.animation',
             to: 'chart.animation'
         },
-        function (json) {
+        function(json) {
             var value = anychart.migrationTool.getValueByPath(json, 'chart.dataPlotSettings.enable3dMode');
             is3d = value || is3d;
             return json;
@@ -575,7 +571,7 @@
             action: 'move',
             from: 'chart.plotType',
             to: 'chart.type',
-            valueReplacer: function (fromValue) {
+            valueReplacer: function(fromValue) {
                 fromValue = fromValue.toLowerCase();
                 var plotType = PLOT_TYPES[fromValue];
                 if (fromValue.indexOf('horizontal') != -1)
@@ -591,14 +587,14 @@
             action: 'move',
             from: 'chart.dataPlotSettings.defaultSeriesType',
             to: 'chart.defaultSeriesType',
-            valueReplacer: function (fromValue) {
+            valueReplacer: function(fromValue) {
                 defaultSeriesType = fromValue.toLowerCase();
                 if ((defaultSeriesType.indexOf('bar') > -1) && isVertical)
                     fromValue = fromValue.replace(/bar/i, 'column');
                 return fromValue;
             }
         },
-        function (json) {
+        function(json) {
             json.chart.barChartMode = !isVertical;
             return json;
         }
@@ -610,10 +606,8 @@
         'y': 'value'
     };
     var modifyPointData = function (pointData, seriesType) {
-        var temp = pointData;
         if( Object.prototype.toString.call( pointData ) !== '[object Array]' ) {
-            pointData = new Array();
-            pointData.push(temp);
+            pointData = [pointData];
         }
         pointData.map(function (dataItem) {
             anychart.migrationTool.transformAttributes(dataItem, dataAttributesTransformationMap);
@@ -626,10 +620,10 @@
             action: 'move',
             from: 'chart.data.series',
             to: 'chart.series',
-            valueReplacer: function (fromValue) {
+            valueReplacer: function(fromValue) {
                 if (!isArray(fromValue))
                     fromValue = [fromValue];
-                fromValue = fromValue.map(function (series) {
+                fromValue = fromValue.map(function(series) {
                     anychart.migrationTool.transformAttributes(series, {
                         'type': 'seriesType'
                     });
@@ -653,20 +647,20 @@
         'rangesplinearea': 'rangearea',
         'spline': 'line'
     };
-    var seriesSettingsTypeSuits = function (seriesSettingsType, seriesType) {
+    var seriesSettingsTypeSuits = function(seriesSettingsType, seriesType) {
         return typeToSettingsMap[seriesType] == seriesSettingsType || seriesType == seriesSettingsType;
     };
 
     // closure over valueReplacer to support different kind of series settings
     // area_setting == seriesSettingsValueReplacer('area')
-    var seriesSettingsValueReplacer = function (seriesSettingsType) {
+    var seriesSettingsValueReplacer = function(seriesSettingsType) {
         seriesSettingsType = seriesSettingsType.toLowerCase();
-        return function (fromValue, toValue) {
+        return function(fromValue, toValue) {
             var seriesList = isArray(toValue) ? toValue :
                 isObject(toValue) ? [toValue] : null;
             if (isNull(seriesList))
                 return fromValue;
-            seriesList = seriesList.map(function (item) {
+            seriesList = seriesList.map(function(item) {
                 if ((item.seriesType && seriesSettingsTypeSuits(seriesSettingsType, item.seriesType.toLowerCase())) ||
                     ((seriesSettingsTypeSuits(seriesSettingsType, defaultSeriesType)) && !item.seriesType))
                     anychart.migrationTool.mixin(item, fromValue);
@@ -675,7 +669,7 @@
             return seriesList;
         }
     };
-    var seriesLabelsSettingsValueReplacer = function (fromValue) {
+    var seriesLabelsSettingsValueReplacer = function(fromValue) {
         if (fromValue.format) {
             //TODO(AntonKagakin): replace with textFormatter, when tokens will be implemented.
             delete fromValue['format'];
@@ -706,7 +700,7 @@
         }
         return fromValue;
     };
-    var seriesTooltipSettingsValueReplacer = function (fromValue) {
+    var seriesTooltipSettingsValueReplacer = function(fromValue) {
         if (fromValue.format) {
             fromValue.textFormatter = fromValue.format;
             delete fromValue['format'];
@@ -726,7 +720,7 @@
         return fromValue;
     };
 
-    var defaultLabelSettingsActionFor = function (seriesName) {
+    var defaultLabelSettingsActionFor = function(seriesName) {
         return {
             action: 'move',
             from: 'chart.dataPlotSettings.' + seriesName + 'Series.labelSettings',
@@ -735,7 +729,7 @@
         }
     };
 
-    var defaultTooltipSettingsActionFor = function (seriesName) {
+    var defaultTooltipSettingsActionFor = function(seriesName) {
         return {
             action: 'move',
             from: 'chart.dataPlotSettings.' + seriesName + 'Series.tooltipSettings',
@@ -743,7 +737,7 @@
             valueReplacer: seriesTooltipSettingsValueReplacer
         }
     };
-    var defaultMarkerSettingsActionFor = function (seriesName) {
+    var defaultMarkerSettingsActionFor = function(seriesName) {
         return [
             {
                 action: 'move',
@@ -763,7 +757,7 @@
         ]
     };
 
-    var defaultSettingsToSeriesFor = function (seriesName) {
+    var defaultSettingsToSeriesFor = function(seriesName) {
         return {
             action: 'move',
             from: 'chart.dataPlotSettings.' + seriesName + 'Series',
@@ -773,7 +767,7 @@
     };
 
 
-    var defaultSettingsActionsFor = function (seriesName) {
+    var defaultSettingsActionsFor = function(seriesName) {
         return [
             // labels
             defaultLabelSettingsActionFor(seriesName),
@@ -925,7 +919,7 @@
             action: 'move',
             from: 'chart.series',
             to: 'chart.data',
-            valueReplacer: function (fromValue) {
+            valueReplacer: function(fromValue) {
                 if (isArray(fromValue))
                     fromValue = fromValue[0];
                 if (fromValue.data)
@@ -1012,7 +1006,7 @@
             action: 'move',
             from: 'chart.series',
             to: 'chart.data',
-            valueReplacer: function (fromValue) {
+            valueReplacer: function(fromValue) {
                 if (isArray(fromValue))
                     fromValue = fromValue[0];
                 if (fromValue.data)
@@ -1059,7 +1053,7 @@
             action: 'move',
             from: 'chart.series',
             to: 'chart.data',
-            valueReplacer: function (fromValue) {
+            valueReplacer: function(fromValue) {
                 if (isArray(fromValue))
                     fromValue = fromValue[0];
                 if (fromValue.data)
@@ -1086,7 +1080,7 @@
         .concat(anychart.migrationTool.nodes.dataPlotSettingsFunnel)
         .concat(anychart.migrationTool.nodes.dataPlotSettingsHeatMap);
 
-    var scaleValueReplacer = function (fromValue) {
+    var scaleValueReplacer = function(fromValue) {
         anychart.migrationTool.transformAttributes(fromValue, {
             'majorInterval': 'interval',
             'mode': 'stackMode',
@@ -1105,10 +1099,10 @@
         return fromValue;
     };
 
-    var rangeAxesMarkersReplacer = function (layout) {
-        return function (fromValue, toValue) {
+    var rangeAxesMarkersReplacer = function(layout) {
+        return function(fromValue, toValue) {
             if (!isArray(fromValue)) fromValue = [fromValue];
-            fromValue = fromValue.map(function (range) {
+            fromValue = fromValue.map(function(range) {
                 anychart.migrationTool.transformAttributes(range, {
                     'minimum': 'from',
                     'maximum': 'to'
@@ -1130,8 +1124,8 @@
         }
     };
 
-    var gridsReplacer = function (layout) {
-        return function (fromValue, toValue) {
+    var gridsReplacer = function(layout) {
+        return function(fromValue, toValue) {
             if (!isDef(fromValue.layout)) {
                 var newLayout;
                 if (isVertical ^ (layout == 'horizontal'))
@@ -1158,7 +1152,7 @@
             action: 'move',
             from: 'chart.chartSettings.legend',
             to: 'chart.legend',
-            valueReplacer: function (fromValue) {
+            valueReplacer: function(fromValue) {
                 delete fromValue.items;
                 return fromValue;
             }
@@ -1185,7 +1179,7 @@
             action: 'move',
             from: 'chart.chartSettings.axes.xAxis',
             to: 'chart.xAxes',
-            valueReplacer: function (fromValue) {
+            valueReplacer: function(fromValue) {
                 if (isVertical)
                     fromValue.orientation = 'bottom';
                 else
@@ -1235,7 +1229,7 @@
             action: 'move',
             from: 'chart.chartSettings.axes.yAxis',
             to: 'chart.yAxes',
-            valueReplacer: function (fromValue) {
+            valueReplacer: function(fromValue) {
                 if (isVertical)
                     fromValue.orientation = 'left';
                 else
@@ -1263,21 +1257,21 @@
     ];
 
     var colorRe = /(Blend|Dark|Light|%Color)/;
-    var hasColorToken = function (obj) {
+    var hasColorToken = function(obj) {
         return (obj.color && colorRe.test(obj.color));
     };
 
-    anychart.migrationTool.nodes.fillCleaner = function (json) {
+    anychart.migrationTool.nodes.fillCleaner = function(json) {
         for (var i in json) {
             if (json.hasOwnProperty(i)) {
                 if (i == 'fill' || i == 'border') {
                     if (Object.keys(json[i]).length == 1 && json[i].opacity)
-                        json[i] = function () {
+                        json[i] = function() {
                             return anychart.color.setOpacity(this.sourceColor, parseInt(json[i].opacity, 10), true);
                         };
 
                     if (Object.keys(json[i]).length == 1 && json[i].thickness)
-                        json[i] = function () {
+                        json[i] = function() {
                             return anychart.color.setThickess(this.sourceColor, json[i].thickness);
                         };
 
