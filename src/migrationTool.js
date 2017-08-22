@@ -388,6 +388,8 @@
 
         var json = parseXML(xml);
 
+        initDefaultTransformations();
+
         if (isNull(opt_type))
             DEFAULT_TRANSFORMATIONS = [];
         else if (opt_type == 'single')
@@ -421,6 +423,8 @@
             json = JSON.parse(jsonOrJsonString);
         else
             json = jsonOrJsonString;
+
+        initDefaultTransformations();
 
         if (isNull(opt_type))
             DEFAULT_TRANSFORMATIONS = [];
@@ -1239,11 +1243,17 @@
         }
     ];
 
-    var DEFAULT_TRANSFORMATIONS = [
-        anychart.migrationTool.nodes.defaults,
-        anychart.migrationTool.nodes.data,
-        anychart.migrationTool.nodes.chartSettings
-    ];
+    var DEFAULT_TRANSFORMATIONS = [];
+
+    var initDefaultTransformations = function () {
+        DEFAULT_TRANSFORMATIONS = [
+            anychart.migrationTool.nodes.defaults,
+            anychart.migrationTool.nodes.data,
+            anychart.migrationTool.nodes.chartSettings
+        ];
+    };
+
+    initDefaultTransformations();
 
     anychart.migrationTool.nodes.clean = [
         {
